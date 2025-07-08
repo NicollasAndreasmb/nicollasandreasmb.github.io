@@ -2,44 +2,112 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nicollas | Portfólio</title>
   <style>
     body {
-      font-family: monospace;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    header {
       background-color: #111;
-      color: #00ff99;
-      padding: 40px;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 60px 20px;
+      gap: 40px;
+    }
+
+    .hero img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
     h1 {
-      border-bottom: 1px solid #00ff99;
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
-    a {
-      color: #00ffff;
+
+    .intro {
+      padding: 0 20px 60px;
+      text-align: center;
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: auto;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <h1>Nicollas Andreas</h1>
-  <p>Desenvolvedor Web & Suporte Técnico</p>
 
-  <h2>Serviços:</h2>
-  <ul>
-    <li>Formatação de Windows</li>
-    <li>Suporte técnico (remoto e presencial)</li>
-    <li>Criação e manutenção de sites</li>
-    <li>Desenvolvimento de sistemas</li>
-    <li>Consultoria em redes</li>
-  </ul>
+  <!-- Cabeçalho com logo e navegação -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo Nicollas"> <!-- Substitua 'logo.png' pela sua logo -->
+      <span>Nicollas</span>
+    </div>
+    <nav>
+      <a href="sites-personalizados.html">Sites</a>
+      <a href="suporte.html">Suporte</a>
+      <a href="sistemas.html">Sistemas</a>
+    </nav>
+  </header>
 
-  <h2>Projetos:</h2>
-  <ul>
-    <li><a href="https://link-do-projeto.com" target="_blank">Sistema de gestão X</a></li>
-    <li><a href="https://outro-projeto.com" target="_blank">Site responsivo Y</a></li>
-  </ul>
+  <!-- Bloco principal com imagem e título -->
+  <section class="hero">
+    <img src="imagem-home.png" alt="Imagem representando seus serviços"> <!-- Troque pela sua imagem -->
+    <div class="hero-text">
+      <h1>Transformo ideias em soluções digitais</h1>
+      <p>Desenvolvedor Web e Técnico em Suporte com foco em criar, manter e otimizar tudo que envolve o mundo digital.</p>
+    </div>
+  </section>
 
-  <h2>Contato:</h2>
-  <p>Email: nicollas@email.com<br>
-  WhatsApp: (19) 9XXXX-XXXX</p>
+  <!-- Texto introdutório -->
+  <section class="intro">
+    <p>
+      Neste portfólio, você encontra detalhes sobre meus serviços de criação de sites personalizados, suporte técnico remoto e presencial, e desenvolvimento de sistemas sob demanda.  
+      <br><br>
+      Tudo feito com foco em **funcionalidade**, **agilidade** e **atendimento humano de verdade**.
+    </p>
+  </section>
+
 </body>
 </html>
-
