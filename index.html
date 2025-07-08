@@ -1,251 +1,358 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nicollas | Portfólio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nicollas | Portfólio</title>
+<style>
+  /* RESET básico */
+  body, h1, h2, p, nav, section, header, a, input {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: background-color 0.4s, color 0.4s;
+  }
 
-    header {
-      background-color: #111;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* Temas */
+  /* TEMA CLARO */
+  body.theme-claro {
+    background-color: #fff;
+    color: #000;
+  }
+  body.theme-claro a {
+    color: #8c52ff;
+  }
+  body.theme-claro header {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  body.theme-claro header nav a {
+    color: #8c52ff;
+  }
+  body.theme-claro .intro {
+    border-color: #ccc;
+  }
+  body.theme-claro hr {
+    border-color: #ccc;
+  }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+  /* TEMA ESCURO */
+  body.theme-escuro {
+    background-color: #131416;
+    color: #fff;
+  }
+  body.theme-escuro a {
+    color: #3c7f72;
+  }
+  body.theme-escuro header {
+    background-color: #131416;
+    color: #fff;
+  }
+  body.theme-escuro header nav a {
+    color: #3c7f72;
+  }
+  body.theme-escuro .intro {
+    border-color: #ccc;
+  }
+  body.theme-escuro hr {
+    border-color: #ccc;
+  }
 
-    .logo img {
-      height: 40px;
-    }
+  /* TEMA COLORIDO (padrão) */
+  body.theme-colorido {
+    background-color: #fff;
+    color: #000;
+  }
+  body.theme-colorido a {
+    color: #3c7f72;
+  }
+  body.theme-colorido header {
+    background-color: #131416;
+    color: #8c52ff;
+  }
+  body.theme-colorido header nav a {
+    color: #3c7f72;
+  }
+  body.theme-colorido .intro {
+    border-color: #444;
+  }
+  body.theme-colorido hr {
+    border-color: #444;
+  }
 
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  /* Estilos gerais */
+  header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: background-color 0.4s, color 0.4s;
+  }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-left img {
+    height: 40px;
+  }
 
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 60px 20px;
-      gap: 40px;
-    }
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
-    .hero img {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-    }
+  #searchBox {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-left: 20px;
+    width: 200px;
+  }
 
-    .hero-text {
-      max-width: 600px;
-    }
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    gap: 40px;
+  }
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
+  .hero img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
 
-    .intro {
-      padding: 20px;
-      text-align: center;
-      font-size: 1.1em;
-      max-width: 800px;
-      margin: auto;
-      color: #444;
-    }
+  .hero-text {
+    max-width: 600px;
+  }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-in-out;
-    }
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  h1 img {
+    height: 40px;
+  }
 
-    #searchBox {
-      padding: 10px;
-      width: 100%;
-      max-width: 400px;
-      margin: 20px auto;
-      display: block;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1em;
-    }
+  .intro {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: auto;
+    color: inherit;
+    border: 1px solid;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: border-color 0.4s, color 0.4s;
+  }
 
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-      background-color: #25d366;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease-in-out;
-    }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+  }
+  .fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .whatsapp-float img {
-      width: 35px;
-      height: 35px;
-    }
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease-in-out;
+  }
+  .whatsapp-float img {
+    width: 35px;
+    height: 35px;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
 
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-    }
-  </style>
+  /* Botão de acessibilidade */
+  #accessibilityBtn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 1.6em;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    transition: color 0.4s;
+  }
+  #accessibilityBtn:hover {
+    color: #8c52ff;
+  }
+</style>
 </head>
-<body>
+<body class="theme-colorido">
 
-  <!-- Cabeçalho -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo Nicollas" />
-      <span>Nicollas</span>
-    </div>
+<header>
+  <div class="header-left">
+    <img src="logo.png" alt="Logo Nicollas" />
+    <span style="font-size: 1.5em; font-weight: bold;">Nicollas</span>
+  </div>
+
+  <div style="display: flex; align-items: center; flex-wrap: wrap;">
     <nav>
       <a href="sites-personalizados.html">Sites</a>
       <a href="suporte.html">Suporte</a>
       <a href="sistemas.html">Sistemas</a>
     </nav>
-  </header>
 
-  <!-- Bloco principal -->
-  <section class="hero fade-in">
-    <img src="imagem-home.png" alt="Imagem representando seus serviços" />
-    <div class="hero-text">
-      <h1>Transformo ideias em soluções digitais</h1>
-      <p>Desenvolvedor Web e Técnico em Suporte com foco em criar, manter e otimizar tudo que envolve o mundo digital.</p>
-    </div>
-  </section>
+    <input type="text" id="searchBox" placeholder="Buscar..." />
 
-  <!-- Barra de busca -->
-  <section class="fade-in">
-    <input type="text" id="searchBox" placeholder="O que você procura? (Ex: wordpress, suporte, sistema...)"/>
-  </section>
+    <button id="accessibilityBtn" aria-label="Mudar tema" title="Mudar tema">♿</button>
+  </div>
+</header>
 
-  <!-- Introdução -->
-  <section class="intro fade-in">
-    <p>
-      Neste portfólio, você encontra detalhes sobre meus serviços de criação de sites personalizados, suporte técnico remoto e presencial, e desenvolvimento de sistemas sob demanda.<br><br>
-      Tudo feito com foco em <strong>funcionalidade</strong>, <strong>agilidade</strong> e <strong>atendimento humano de verdade</strong>.
-    </p>
-  </section>
+<section class="hero fade-in">
+  <img src="imagem-home.png" alt="Imagem representando seus serviços" />
+  <div class="hero-text">
+    <h1>
+      <img src="logo.png" alt="Logo no título" />
+      Transformo ideias em soluções digitais
+    </h1>
+    <p>Desenvolvedor Web e Técnico em Suporte com foco em criar, manter e otimizar tudo que envolve o mundo digital.</p>
+  </div>
+</section>
 
-  <!-- Resumo de Serviços -->
-  <section class="intro fade-in">
-    <h2>Sites Personalizados</h2>
-    <p>
-      Desenvolvimento de sites únicos, responsivos e pensados para o seu público.  
-      Utilizo WordPress ou crio do zero, conforme sua necessidade e orçamento.  
-      <a href="sites-personalizados.html">→ Saiba mais</a>
-    </p>
-  </section>
+<section class="intro fade-in">
+  <p>
+    Neste portfólio, você encontra detalhes sobre meus serviços de criação de sites personalizados, suporte técnico remoto e presencial, e desenvolvimento de sistemas sob demanda.<br><br>
+    Tudo feito com foco em <strong>funcionalidade</strong>, <strong>agilidade</strong> e <strong>atendimento humano de verdade</strong>.
+  </p>
+</section>
 
-  <section class="intro fade-in">
-    <h2>Suporte Técnico</h2>
-    <p>
-      Atendimento remoto ou presencial para resolver problemas com agilidade e clareza.  
-      Inclui formatação de Windows, instalação de programas e consultoria para melhorar o desempenho do seu sistema.  
-      <a href="suporte.html">→ Saiba mais</a>
-    </p>
-  </section>
+<section class="intro fade-in">
+  <h2>Sites Personalizados</h2>
+  <p>
+    Desenvolvimento de sites únicos, responsivos e pensados para o seu público.  
+    Utilizo WordPress ou crio do zero, conforme sua necessidade e orçamento.  
+    <a href="sites-personalizados.html">→ Saiba mais</a>
+  </p>
+</section>
 
-  <section class="intro fade-in">
-    <h2>Sistemas Sob Demanda</h2>
-    <p>
-      Soluções desenvolvidas do zero para automatizar tarefas, organizar dados e facilitar seu dia a dia.  
-      Sistemas leves, funcionais e acessíveis de qualquer lugar.  
-      <a href="sistemas.html">→ Saiba mais</a>
-    </p>
-  </section>
+<section class="intro fade-in">
+  <h2>Suporte Técnico</h2>
+  <p>
+    Atendimento remoto ou presencial para resolver problemas com agilidade e clareza.  
+    Inclui formatação de Windows, instalação de programas e consultoria para melhorar o desempenho do seu sistema.  
+    <a href="suporte.html">→ Saiba mais</a>
+  </p>
+</section>
 
-  <!-- Botão do WhatsApp -->
-  <a href="https://wa.me/55SEUNUMERO" class="whatsapp-float" target="_blank" aria-label="Chamar no WhatsApp">
-    <img src="https://cdn.jsdelivr.net/gh/rafaelbotazini/whatsapp-button@main/icon-whatsapp.svg" alt="WhatsApp" />
-  </a>
+<section class="intro fade-in">
+  <h2>Sistemas Sob Demanda</h2>
+  <p>
+    Soluções desenvolvidas do zero para automatizar tarefas, organizar dados e facilitar seu dia a dia.  
+    Sistemas leves, funcionais e acessíveis de qualquer lugar.  
+    <a href="sistemas.html">→ Saiba mais</a>
+  </p>
+</section>
 
-  <!-- Scripts -->
-  <script>
-    // Fade-in ao rolar
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    });
-    faders.forEach(el => observer.observe(el));
+<a href="https://wa.me/5514991817771" class="whatsapp-float" target="_blank" aria-label="Chamar no WhatsApp">
+  <img src="https://cdn.jsdelivr.net/gh/rafaelbotazini/whatsapp-button@main/icon-whatsapp.svg" alt="WhatsApp" />
+</a>
 
-    // Busca inteligente
-    const searchTerms = {
-      "wordpress": "sites-personalizados.html",
-      "site": "sites-personalizados.html",
-      "sites": "sites-personalizados.html",
-      "hospedagem": "sites-personalizados.html",
-      "domínio": "sites-personalizados.html",
-      "formatação": "suporte.html",
-      "formata": "suporte.html",
-      "suporte": "suporte.html",
-      "manutenção": "suporte.html",
-      "windows": "suporte.html",
-      "instalação": "suporte.html",
-      "técnico": "suporte.html",
-      "remoto": "suporte.html",
-      "rede": "suporte.html",
-      "desempenho": "suporte.html",
-      "sistema": "sistemas.html",
-      "sistemas": "sistemas.html",
-      "web": "sistemas.html",
-      "programa": "sistemas.html",
-      "sistemas web": "sistemas.html",
-      "sob demanda": "sistemas.html",
-      "automação": "sistemas.html",
-      "rpa": "sistemas.html"
-    };
-
-    document.getElementById("searchBox").addEventListener("keypress", function(e) {
-      if (e.key === "Enter") {
-        const term = e.target.value.toLowerCase().trim();
-        for (let key in searchTerms) {
-          if (term.includes(key)) {
-            window.location.href = searchTerms[key];
-            return;
-          }
-        }
-        alert("Nada encontrado. Tente outra palavra.");
+<script>
+  // Fade in scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
       }
     });
-  </script>
+  });
+  faders.forEach(el => observer.observe(el));
 
+  // Busca inteligente
+  const searchTerms = {
+    "wordpress": "sites-personalizados.html",
+    "site": "sites-personalizados.html",
+    "sites": "sites-personalizados.html",
+    "hospedagem": "sites-personalizados.html",
+    "domínio": "sites-personalizados.html",
+    "formatação": "suporte.html",
+    "formata": "suporte.html",
+    "suporte": "suporte.html",
+    "manutenção": "suporte.html",
+    "windows": "suporte.html",
+    "instalação": "suporte.html",
+    "técnico": "suporte.html",
+    "remoto": "suporte.html",
+    "rede": "suporte.html",
+    "desempenho": "suporte.html",
+    "sistema": "sistemas.html",
+    "sistemas": "sistemas.html",
+    "web": "sistemas.html",
+    "programa": "sistemas.html",
+    "sistemas web": "sistemas.html",
+    "sob demanda": "sistemas.html",
+    "automação": "sistemas.html",
+    "rpa": "sistemas.html"
+  };
+
+  document.getElementById("searchBox").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      const term = e.target.value.toLowerCase().trim();
+      for (let key in searchTerms) {
+        if (term.includes(key)) {
+          window.location.href = searchTerms[key];
+          return;
+        }
+      }
+      alert("Nada encontrado. Tente outra palavra.");
+    }
+  });
+
+  // Controle do tema - acessibilidade
+  const themes = ["theme-colorido", "theme-claro", "theme-escuro"];
+  let currentThemeIndex = 0;
+
+  // Checa se tem tema salvo
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme && themes.includes(savedTheme)) {
+    document.body.className = savedTheme;
+    currentThemeIndex = themes.indexOf(savedTheme);
+  }
+
+  const btn = document.getElementById("accessibilityBtn");
+  btn.addEventListener("click", () => {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    const newTheme = themes[currentThemeIndex];
+    document.body.className = newTheme;
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
 </body>
 </html>
