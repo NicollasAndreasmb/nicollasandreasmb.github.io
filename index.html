@@ -74,6 +74,31 @@
       margin: auto;
       color: #444;
     }
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    .whatsapp-float img {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
   </style>
 </head>
 <body>
@@ -136,6 +161,9 @@
       <a href="sistemas.html">→ Saiba mais</a>
     </p>
   </section>
-
+<!-- Botão flutuante do WhatsApp -->
+<a href="https://wa.me/5514991817771" class="whatsapp-float" target="_blank" aria-label="Chamar no WhatsApp">
+  <img src="https://cdn.jsdelivr.net/gh/rafaelbotazini/whatsapp-button@main/icon-whatsapp.svg" alt="WhatsApp">
+</a>
 </body>
 </html>
