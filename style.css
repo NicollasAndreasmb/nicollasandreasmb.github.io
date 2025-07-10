@@ -4,8 +4,9 @@
  * Temas, responsividade, navegação, botões e acessibilidade
  */
 
+/* style.css - CSS Supremo: enxuto, comentado, moderno e responsivo */
+
 /* RESET BÁSICO */
-/* Remove margens, paddings e aplica box-sizing padrão */
 body, h1, h2, p, nav, section, header, a, input, footer, textarea, select, button {
   margin: 0;
   padding: 0;
@@ -18,9 +19,9 @@ body {
   transition: background-color 0.4s, color 0.4s;
 }
 
-/* ===========================
-   TEMAS (claro, escuro, colorido)
-   =========================== */
+/* ===================
+   TEMAS
+   =================== */
 
 /* Tema Claro */
 body.theme-claro {
@@ -94,9 +95,9 @@ body.theme-colorido footer {
   border-top: 1px solid #3c7f72;
 }
 
-/* ===========================
+/* ===================
    HEADER E NAVEGAÇÃO
-   =========================== */
+   =================== */
 
 header {
   padding: 20px 40px;
@@ -144,7 +145,7 @@ nav a:hover {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Botão acessibilidade */
+/* Botão de acessibilidade */
 #accessibilityBtn {
   cursor: pointer;
   background: transparent;
@@ -156,16 +157,14 @@ nav a:hover {
   align-items: center;
   transition: color 0.4s;
 }
-
 #accessibilityBtn:hover {
   color: #8c52ff;
 }
 
-/* ===========================
+/* ===================
    RESPONSIVIDADE - MENU MOBILE
-   =========================== */
+   =================== */
 
-/* Botão toggle do menu mobile */
 #menuToggle {
   display: none;
   background: transparent;
@@ -176,7 +175,6 @@ nav a:hover {
   color: inherit;
 }
 
-/* Menu escondido no mobile */
 @media (max-width: 768px) {
   nav {
     display: none;
@@ -202,9 +200,9 @@ nav a:hover {
   }
 }
 
-/* ===========================
+/* ===================
    CONTEÚDO PRINCIPAL
-   =========================== */
+   =================== */
 
 main {
   max-width: 900px;
@@ -253,9 +251,9 @@ h1 img {
   text-decoration: underline;
 }
 
-/* ===========================
+/* ===================
    FORMULÁRIOS
-   =========================== */
+   =================== */
 
 form input,
 form select,
@@ -284,9 +282,9 @@ form button:hover {
   background-color: #6f3dc9;
 }
 
-/* ===========================
+/* ===================
    FLOATING WHATSAPP BUTTON
-   =========================== */
+   =================== */
 
 .whatsapp-float {
   position: fixed;
@@ -313,9 +311,9 @@ form button:hover {
   transform: scale(1.1);
 }
 
-/* ===========================
+/* ===================
    FOOTER
-   =========================== */
+   =================== */
 
 footer {
   background-color: inherit;
@@ -339,9 +337,9 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ===========================
+/* ===================
    POPUP (EXEMPLO)
-   =========================== */
+   =================== */
 
 #popup {
   display: none;
