@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
-    body, h1, h2, p, nav, section, header, a, input, footer {
+    body, h1, h2, p, nav, section, header, a, input, footer, textarea, select, button {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
@@ -134,6 +134,28 @@
       text-decoration: underline;
     }
 
+    form input, form select, form textarea, form button {
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 8px;
+      font-size: 1em;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: #8c52ff;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #6f3dc9;
+    }
+
     footer {
       background-color: inherit;
       color: inherit;
@@ -154,6 +176,24 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    #popup {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #000;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      z-index: 1000;
+      max-width: 90%;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body class="theme-colorido">
@@ -165,9 +205,7 @@
   </div>
 
   <div style="display: flex; align-items: center; flex-wrap: wrap;">
-
     <input type="text" id="searchBox" placeholder="Buscar..." />
-    
     <nav>
       <a href="index.html">Home</a>
       <a href="sites-personalizados.html">Sites</a>
@@ -175,7 +213,6 @@
       <a href="sistemas.html">Sistemas</a>
       <a href="contato.html">Contato</a>
     </nav>
-    
     <button id="accessibilityBtn" aria-label="Mudar tema" title="Mudar tema">🎨</button>
   </div>
 </header>
@@ -190,55 +227,41 @@
     <h2>Vamos conversar?</h2>
     <p>Se interessou por algum serviço? Tem uma dúvida, projeto ou ideia pra tirar do papel? Manda mensagem que eu respondo rapidinho.</p>
   </section>
-<section class="content-section">
-  <h2>Solicite um serviço</h2>
-  <form action="https://formsubmit.co/nicollasamb@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
 
-    <!-- Proteção e redirecionamento -->
-    <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
-    <input type="hidden" name="_captcha" value="false">
-
-    <label>
-      Nome:
-      <input type="text" name="nome" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-    </label>
-
-    <label>
-      E-mail:
-      <input type="email" name="email" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-    </label>
-
-    <label>
-      Tipo de serviço:
-      <select name="servico" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-        <option value="">Selecione</option>
-        <option value="Site Personalizado">Site Personalizado</option>
-        <option value="Suporte Técnico">Suporte Técnico</option>
-        <option value="Sistema Sob Demanda">Sistema Sob Demanda</option>
-        <option value="Outro">Outro</option>
-      </select>
-    </label>
-
-    <label>
-      Descreva sua necessidade:
-      <textarea name="mensagem" rows="5" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
-    </label>
-
-    <button type="submit" style="padding: 12px 20px; border: none; border-radius: 5px; background-color: #3c7f72; color: white; font-weight: bold; cursor: pointer;">
-      Enviar Solicitação
-    </button>
-  </form>
-</section>
-
-  
   <section class="content-section">
     <h2>Me chame direto:</h2>
     <ul style="line-height: 2;">
       <li>📱 <a href="https://wa.me/5514991817771" target="_blank">WhatsApp</a></li>
       <li>📧 <a href="mailto:nicollasamb@gmail.com">nicollasamb@gmail.com</a></li>
       <li>💼 <a href="https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/" target="_blank">LinkedIn</a></li>
-      <li>🗂️ <a href="https://github.com/NicollasAndreasmb/" target="_blank">Meus Projetos</li>
+      <li>🗂️ <a href="https://github.com/NicollasAndreasmb/" target="_blank">Meus Projetos</a></li>
     </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Solicitar um serviço</h2>
+    <form id="serviceForm">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="servico">Tipo de serviço:</label>
+      <select id="servico" name="servico" required>
+        <option value="">-- Selecione --</option>
+        <option value="formatação">Formatação</option>
+        <option value="suporte">Suporte Técnico</option>
+        <option value="sites">Sites Personalizados</option>
+        <option value="sistemas">Sistemas sob Demanda</option>
+        <option value="outros">Outro</option>
+      </select>
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+      <button type="submit">Enviar Solicitação</button>
+    </form>
   </section>
 </main>
 
@@ -246,6 +269,8 @@
   &copy; <span id="year"></span> Nicollas.  
   <a href="https://github.com/NicollasAndreasmb/" target="_blank">GitHub</a>
 </footer>
+
+<div id="popup">✅ Solicitação enviada com sucesso!</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -284,12 +309,36 @@
     document.body.className = savedTheme;
     currentThemeIndex = themes.indexOf(savedTheme);
   }
-  const btn = document.getElementById("accessibilityBtn");
-  btn.addEventListener("click", () => {
+  document.getElementById("accessibilityBtn").addEventListener("click", () => {
     currentThemeIndex = (currentThemeIndex + 1) % themes.length;
     const newTheme = themes[currentThemeIndex];
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
+  });
+
+  document.getElementById('serviceForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    fetch("https://formsubmit.co/ajax/nicollasamb@gmail.com", {
+      method: "POST",
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('popup').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('popup').style.display = 'none';
+          form.reset();
+        }, 3000);
+      } else {
+        alert("Erro ao enviar. Tente novamente.");
+      }
+    })
+    .catch(() => {
+      alert("Erro na conexão. Verifique sua internet.");
+    });
   });
 </script>
 
