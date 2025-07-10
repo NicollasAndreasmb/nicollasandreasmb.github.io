@@ -9,238 +9,415 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
   <style>
-    body, h1, h2, p, nav, section, header, a, input, footer, textarea, select, button {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      transition: background-color 0.4s, color 0.4s;
-      position: relative;
-    }
+  /* -------------------- RESET GERAL -------------------- */
+  body, h1, h2, p, nav, section, header, a, input, footer, textarea, select, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body.theme-claro {
-      background-color: #fff; color: #000;
-    }
-    body.theme-claro a { color: #8c52ff; }
-    body.theme-claro header { background-color: #f0f0f0; color: #000; }
-    body.theme-claro header nav a { color: #8c52ff; }
-    body.theme-claro .content-section { border-color: #ccc; }
-    body.theme-claro footer {
-      background-color: #f0f0f0; color: #000; border-top: 1px solid #8c52ff;
-    }
+  /* -------------------- TIPOGRAFIA E TRANSIÇÕES -------------------- */
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: background-color 0.4s, color 0.4s;
+  }
 
-    body.theme-escuro {
-      background-color: #131416; color: #fff;
-    }
-    body.theme-escuro a { color: #3c7f72; }
-    body.theme-escuro header { background-color: #131416; color: #fff; }
-    body.theme-escuro header nav a { color: #3c7f72; }
-    body.theme-escuro .content-section { border-color: #ccc; }
-    body.theme-escuro footer {
-      background-color: #131416; color: #8c52ff; border-top: 1px solid #3c7f72;
-    }
+  /* -------------------- TEMA CLARO -------------------- */
+  body.theme-claro {
+    background-color: #fff;
+    color: #000;
+  }
+  body.theme-claro a {
+    color: #8c52ff;
+  }
+  body.theme-claro header {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  body.theme-claro header nav a {
+    color: #8c52ff;
+  }
+  body.theme-claro .intro,
+  body.theme-claro .content-section,
+  body.theme-claro hr {
+    border-color: #ccc;
+  }
+  body.theme-claro footer {
+    background-color: #f0f0f0;
+    color: #000;
+    border-top: 1px solid #8c52ff;
+  }
 
-    body.theme-colorido {
-      background-color: #fff; color: #000;
-    }
-    body.theme-colorido a { color: #3c7f72; }
-    body.theme-colorido header {
-      background-color: #131416; color: #8c52ff;
-    }
-    body.theme-colorido header nav a { color: #3c7f72; }
-    body.theme-colorido .content-section { border-color: #444; }
-    body.theme-colorido footer {
-      background-color: #131416; color: #8c52ff; border-top: 1px solid #3c7f72;
-    }
+  /* -------------------- TEMA ESCURO -------------------- */
+  body.theme-escuro {
+    background-color: #131416;
+    color: #fff;
+  }
+  body.theme-escuro a {
+    color: #3c7f72;
+  }
+  body.theme-escuro header,
+  body.theme-escuro footer {
+    background-color: #131416;
+    color: #fff;
+  }
+  body.theme-escuro header nav a {
+    color: #3c7f72;
+  }
+  body.theme-escuro .intro,
+  body.theme-escuro .content-section,
+  body.theme-escuro hr {
+    border-color: #ccc;
+  }
+  body.theme-escuro footer {
+    color: #8c52ff;
+    border-top: 1px solid #3c7f72;
+  }
 
-    header {
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .header-left img {
-      height: 40px;
-    }
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    #searchBox {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      margin-left: 20px;
-      width: 200px;
-    }
-    #accessibilityBtn {
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      color: inherit;
-      font-size: 1.6em;
-      margin-left: 20px;
-    }
+  /* -------------------- TEMA COLORIDO -------------------- */
+  body.theme-colorido {
+    background-color: #fff;
+    color: #000;
+  }
+  body.theme-colorido a {
+    color: #3c7f72;
+  }
+  body.theme-colorido header {
+    background-color: #131416;
+    color: #8c52ff;
+  }
+  body.theme-colorido header nav a {
+    color: #3c7f72;
+  }
+  body.theme-colorido .intro,
+  body.theme-colorido .content-section,
+  body.theme-colorido hr {
+    border-color: #444;
+  }
+  body.theme-colorido footer {
+    background-color: #131416;
+    color: #8c52ff;
+    border-top: 1px solid #3c7f72;
+  }
 
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+  /* -------------------- HEADER -------------------- */
+  header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    transition: background-color 0.4s, color 0.4s;
+  }
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h1 img {
-      height: 40px;
-    }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .content-section {
-      border: 1px solid;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
+  .header-left img {
+    height: 40px;
+  }
 
-    .content-section h2 {
-      margin-bottom: 10px;
-    }
+  nav {
+    display: flex;
+    gap: 20px;
+  }
 
-    .content-section p {
-      font-size: 1.1em;
-      line-height: 1.5em;
-    }
+  nav a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
 
-    .content-section a {
-      font-weight: bold;
-      text-decoration: none;
-    }
+  nav a:hover {
+    text-decoration: underline;
+  }
 
-    .content-section a:hover {
-      text-decoration: underline;
-    }
+  #menuToggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.8em;
+    margin-left: 20px;
+    cursor: pointer;
+    color: inherit;
+  }
 
-    form input, form select, form textarea, form button {
-      margin-top: 5px;
-      margin-bottom: 15px;
-      padding: 8px;
-      font-size: 1em;
-      width: 100%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background-color: #8c52ff;
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: #6f3dc9;
-    }
-
-    footer {
-      background-color: inherit;
-      color: inherit;
-      text-align: center;
-      padding: 15px 20px;
-      font-size: 0.9em;
-      border-top: 1px solid;
-      border-color: inherit;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    #popup {
+  /* -------------------- RESPONSIVIDADE MENU -------------------- */
+  @media (max-width: 768px) {
+    nav {
       display: none;
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      color: #000;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: inherit;
+      border: 1px solid #ccc;
+      padding: 10px;
       border-radius: 10px;
       z-index: 1000;
-      max-width: 90%;
-      text-align: center;
-      font-size: 1.2em;
-      font-weight: bold;
     }
 
-
-    /* ====== RESPONSIVO: MENU HAMBURGUER ====== */
-
-    /* Esconde nav e mostra botão hamburguer no celular */
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: inherit;
-        position: absolute;
-        top: 60px; /* abaixo do header */
-        right: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 10px;
-        width: 150px;
-        z-index: 999;
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      nav a {
-        margin: 10px 0;
-        margin-left: 0;
-      }
-
-      #menuToggle {
-        display: block;
-        cursor: pointer;
-        font-size: 1.8em;
-        background: transparent;
-        border: none;
-        color: inherit;
-        margin-left: 20px;
-      }
+    nav.show {
+      display: flex;
     }
 
-    /* No desktop, esconde botão */
     #menuToggle {
-      display: none;
+      display: block;
     }
-  </style>
+
+    #searchBox {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+
+  /* -------------------- BUSCA -------------------- */
+  #searchBox {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-left: 20px;
+    width: 200px;
+  }
+
+  /* -------------------- ACESSIBILIDADE -------------------- */
+  #accessibilityBtn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 1.6em;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    transition: color 0.4s;
+  }
+
+  #accessibilityBtn:hover {
+    color: #8c52ff;
+  }
+
+  /* -------------------- HERO -------------------- */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    gap: 40px;
+  }
+
+  .hero img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-text {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h1 img {
+    height: 40px;
+  }
+
+  /* -------------------- SEÇÃO INTRODUÇÃO -------------------- */
+  .intro {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: auto;
+    color: inherit;
+    border: 1px solid;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: border-color 0.4s, color 0.4s;
+  }
+
+  /* -------------------- BOTÃO WHATSAPP FIXO -------------------- */
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .whatsapp-float img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+
+  /* -------------------- FOOTER -------------------- */
+  footer {
+    background-color: inherit;
+    color: inherit;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.9em;
+    border-top: 1px solid;
+    border-color: inherit;
+    margin-top: 40px;
+    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* -------------------- SEÇÕES DE CONTEÚDO PADRÃO -------------------- */
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .content-section {
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: inherit;
+    color: inherit;
+    transition: border-color 0.4s, color 0.4s;
+  }
+
+  .content-section h2 {
+    margin-bottom: 10px;
+    color: inherit;
+  }
+
+  .content-section p {
+    font-size: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .content-section a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .content-section a:hover {
+    text-decoration: underline;
+  }
+
+  /* -------------------- FORMULÁRIOS -------------------- */
+  form input,
+  form select,
+  form textarea,
+  form button {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 1em;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  form button {
+    background-color: #8c52ff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  form button:hover {
+    background-color: #6f3dc9;
+  }
+
+  /* -------------------- POPUP PADRÃO -------------------- */
+  #popup {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #000;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    z-index: 1000;
+    max-width: 90%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  /* -------------------- Whatsapp -------------------- */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.whatsapp-float .tooltip-text {
+  position: absolute;
+  bottom: 70px;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1001;
+}
+
+.whatsapp-float:hover .tooltip-text {
+  opacity: 1;
+}
+</style>
 </head>
 <body class="theme-colorido">
 
