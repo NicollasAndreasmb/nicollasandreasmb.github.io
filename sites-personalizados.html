@@ -11,7 +11,7 @@
 
   <style>
     /* RESET básico */
-    body, h1, h2, p, nav, section, header, a, input, footer {
+    body, h1, h2, p, nav, section, header, a, input, footer, button {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
@@ -63,6 +63,8 @@
       align-items: center;
       flex-wrap: wrap;
       transition: background-color 0.4s, color 0.4s;
+      position: relative; /* necessário para nav absoluto no mobile */
+      z-index: 1000;
     }
     .header-left {
       display: flex;
@@ -72,8 +74,14 @@
     .header-left img {
       height: 40px;
     }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s ease;
+      position: static; /* padrão desktop */
+    }
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
@@ -162,6 +170,48 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* BOTÃO MENU HAMBURGUER (escondido no desktop) */
+    #menuToggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: inherit;
+      margin-left: 20px;
+    }
+
+    /* RESPONSIVO - MOBILE */
+    @media (max-width: 768px) {
+      #searchBox {
+        width: 120px;
+        margin-left: 10px;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px; /* um pouco abaixo do header */
+        right: 20px;
+        background-color: inherit;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        min-width: 150px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 1001;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        margin: 8px 0;
+      }
+      #menuToggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="theme-colorido">
@@ -171,8 +221,9 @@
     <img src="logo.png" alt="Logo Nicollas" />
     <span style="font-size: 1.5em; font-weight: bold;">Nicollas</span>
   </div>
+
   <div style="display: flex; align-items: center; flex-wrap: wrap;">
-  <input type="text" id="searchBox" placeholder="Buscar..." />
+    <input type="text" id="searchBox" placeholder="Buscar..." />
     
     <nav>
       <a href="index.html">Home</a>
@@ -181,6 +232,8 @@
       <a href="sistemas.html">Sistemas</a>
       <a href="contato.html">Contato</a>
     </nav>
+
+    <button id="menuToggle" aria-label="Abrir menu" title="Abrir menu">☰</button>
     
     <button id="accessibilityBtn" aria-label="Mudar tema" title="Mudar tema">🎨</button>
   </div>
@@ -362,8 +415,34 @@
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
   });
+
+  // Controle do menu hamburguer
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.querySelector('header nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+
+    if(nav.classList.contains('show')) {
+      menuToggle.setAttribute('aria-label', 'Fechar menu');
+      menuToggle.setAttribute('title', 'Fechar menu');
+    } else {
+      menuToggle.setAttribute('aria-label', 'Abrir menu');
+      menuToggle.setAttribute('title', 'Abrir menu');
+    }
+  });
+
+  // Fecha o menu se clicar em algum link dentro dele (UX melhor)
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if(nav.classList.contains('show')) {
+        nav.classList.remove('show');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+        menuToggle.setAttribute('title', 'Abrir menu');
+      }
+    });
+  });
 </script>
 
 </body>
 </html>
-
