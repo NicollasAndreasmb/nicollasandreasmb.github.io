@@ -499,14 +499,125 @@
 <div id="popup">✅ Solicitação enviada com sucesso!</div>
 
 <script>
+  /**
+   * Atualiza automaticamente o ano no rodapé.
+   */
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  /**
+   * Termos de busca para redirecionamento inteligente.
+   * @type {Object<string, string>}
+   */
   const searchTerms = {
-    // (seu objeto searchTerms aqui, igual ao que você tinha)
-    // mantive o seu conteúdo, pode copiar direto de cima
-    // para economizar espaço aqui, omitido
+    // Sites Personalizados
+    "wordpress": "sites-personalizados.html",
+    "site": "sites-personalizados.html",
+    "sites": "sites-personalizados.html",
+    "landing page": "sites-personalizados.html",
+    "site institucional": "sites-personalizados.html",
+    "página web": "sites-personalizados.html",
+    "criação de site": "sites-personalizados.html",
+    "fazer site": "sites-personalizados.html",
+    "desenvolvimento de site": "sites-personalizados.html",
+    "web design": "sites-personalizados.html",
+    "pagina personalizada": "sites-personalizados.html",
+    "html": "sites-personalizados.html",
+    "css": "sites-personalizados.html",
+    "javascript": "sites-personalizados.html",
+    "loja virtual": "sites-personalizados.html",
+    "ecommerce": "sites-personalizados.html",
+    "blog": "sites-personalizados.html",
+    "portfolio": "sites-personalizados.html",
+    "portfólio": "sites-personalizados.html",
+
+    // Suporte Técnico
+    "suporte": "suporte.html",
+    "formatação": "suporte.html",
+    "formatacao": "suporte.html",
+    "formata": "suporte.html",
+    "formatar": "suporte.html",
+    "windows": "suporte.html",
+    "manutenção": "suporte.html",
+    "manutencao": "suporte.html",
+    "atendimento": "suporte.html",
+    "remoto": "suporte.html",
+    "presencial": "suporte.html",
+    "consultoria": "suporte.html",
+    "tecnico": "suporte.html",
+    "técnico": "suporte.html",
+    "conserto": "suporte.html",
+    "problema no pc": "suporte.html",
+    "otimização": "suporte.html",
+    "otimizacao": "suporte.html",
+    "melhorar desempenho": "suporte.html",
+    "computador lento": "suporte.html",
+    "limpeza de sistema": "suporte.html",
+    "formatar notebook": "suporte.html",
+    "problema rede": "suporte.html",
+    "internet lenta": "suporte.html",
+
+    // Sistemas Sob Demanda
+    "sistema": "sistemas.html",
+    "sistemas": "sistemas.html",
+    "web app": "sistemas.html",
+    "automação": "sistemas.html",
+    "automacao": "sistemas.html",
+    "software": "sistemas.html",
+    "programa": "sistemas.html",
+    "sob demanda": "sistemas.html",
+    "personalizado": "sistemas.html",
+    "dashboard": "sistemas.html",
+    "painel de controle": "sistemas.html",
+    "rpa": "sistemas.html",
+    "processos": "sistemas.html",
+    "automatização": "sistemas.html",
+    "projeto exclusivo": "sistemas.html",
+    "crm": "sistemas.html",
+    "sistema para empresa": "sistemas.html",
+    "gestão": "sistemas.html",
+    "controle financeiro": "sistemas.html",
+    "fluxo de caixa": "sistemas.html",
+    "controle de estoque": "sistemas.html",
+
+    // Contato
+    "contato": "contato.html",
+    "fale comigo": "contato.html",
+    "mensagem": "contato.html",
+    "email": "contato.html",
+    "e-mail": "contato.html",
+    "gmail": "contato.html",
+    "whatsapp": "contato.html",
+    "zap": "contato.html",
+    "linkedin": "contato.html",
+    "currículo": "contato.html",
+    "proposta": "contato.html",
+    "contratar": "contato.html",
+    "orcamento": "contato.html",
+    "orçamento": "contato.html",
+    "dúvida": "contato.html",
+    "duvida": "contato.html",
+    "telefone": "contato.html",
+    "chamar": "contato.html",
+    "suporte direto": "contato.html",
+
+    // Home
+    "inicio": "index.html",
+    "início": "index.html",
+    "home": "index.html",
+    "principal": "index.html",
+    "nicollas": "index.html",
+    "serviços": "index.html",
+    "sobre mim": "index.html",
+    "quem sou": "index.html",
+    "meus serviços": "index.html",
+    "dev": "index.html",
+    "portfólio": "index.html",
+    "portfolio": "index.html"
   };
 
+  /**
+   * Evento de busca com Enter no campo de busca.
+   */
   document.getElementById("searchBox").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
       const term = e.target.value.toLowerCase().trim();
@@ -520,6 +631,9 @@
     }
   });
 
+  /**
+   * Alternância de temas acessíveis.
+   */
   const themes = ["theme-colorido", "theme-claro", "theme-escuro"];
   let currentThemeIndex = 0;
   const savedTheme = localStorage.getItem('theme');
@@ -534,48 +648,49 @@
     localStorage.setItem('theme', newTheme);
   });
 
-  // Menu hamburguer toggle
+  /**
+   * Menu hambúrguer responsivo com acessibilidade.
+   */
   const menuToggle = document.getElementById('menuToggle');
   const nav = document.querySelector('header nav');
-
   menuToggle.addEventListener('click', () => {
     nav.classList.toggle('show');
-
-    if(nav.classList.contains('show')) {
-      menuToggle.setAttribute('aria-label', 'Fechar menu');
-      menuToggle.setAttribute('title', 'Fechar menu');
-    } else {
-      menuToggle.setAttribute('aria-label', 'Abrir menu');
-      menuToggle.setAttribute('title', 'Abrir menu');
-    }
+    const isOpen = nav.classList.contains('show');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    menuToggle.setAttribute('title', isOpen ? 'Fechar menu' : 'Abrir menu');
   });
-
-  // Formulário - envio via FormSubmit
-  document.getElementById('serviceForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    fetch("https://formsubmit.co/ajax/nicollasamb@gmail.com", {
-      method: "POST",
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        document.getElementById('popup').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('popup').style.display = 'none';
-          form.reset();
-        }, 3000);
-      } else {
-        alert("Erro ao enviar. Tente novamente.");
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('show')) {
+        nav.classList.remove('show');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+        menuToggle.setAttribute('title', 'Abrir menu');
       }
-    })
-    .catch(() => {
-      alert("Erro na conexão. Verifique sua internet.");
     });
   });
+
+  /**
+   * Botão do WhatsApp com mensagem personalizada por página
+   */
+  const pathname = window.location.pathname.toLowerCase();
+  const numero = "5514991817771";
+  let mensagem = "Olá! Encontrei seu site e quero conversar com você.";
+  if (pathname.includes("sites")) {
+    mensagem = "Olá! Vi sua página de sites personalizados e gostaria de saber mais!";
+  } else if (pathname.includes("suporte")) {
+    mensagem = "Olá! Preciso de ajuda com meu computador, vi que você oferece suporte técnico!";
+  } else if (pathname.includes("sistemas")) {
+    mensagem = "Oi! Vi seu portfólio de sistemas e queria conversar sobre um projeto sob medida.";
+  } else if (pathname.includes("contato")) {
+    mensagem = "Olá! Gostaria de entrar em contato com você!";
+  }
+  const linkWhats = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  const botaoWhats = document.getElementById("whatsapp-float");
+  if (botaoWhats) {
+    botaoWhats.setAttribute("href", linkWhats);
+  }
 </script>
+
 
 </body>
 </html>
