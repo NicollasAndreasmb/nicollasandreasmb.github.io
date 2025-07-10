@@ -190,7 +190,47 @@
     <h2>Vamos conversar?</h2>
     <p>Se interessou por algum serviço? Tem uma dúvida, projeto ou ideia pra tirar do papel? Manda mensagem que eu respondo rapidinho.</p>
   </section>
+<section class="content-section">
+  <h2>Solicite um serviço</h2>
+  <form action="https://formsubmit.co/nicollasamb@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
 
+    <!-- Proteção e redirecionamento -->
+    <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <label>
+      Nome:
+      <input type="text" name="nome" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    </label>
+
+    <label>
+      E-mail:
+      <input type="email" name="email" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    </label>
+
+    <label>
+      Tipo de serviço:
+      <select name="servico" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="">Selecione</option>
+        <option value="Site Personalizado">Site Personalizado</option>
+        <option value="Suporte Técnico">Suporte Técnico</option>
+        <option value="Sistema Sob Demanda">Sistema Sob Demanda</option>
+        <option value="Outro">Outro</option>
+      </select>
+    </label>
+
+    <label>
+      Descreva sua necessidade:
+      <textarea name="mensagem" rows="5" required style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+    </label>
+
+    <button type="submit" style="padding: 12px 20px; border: none; border-radius: 5px; background-color: #3c7f72; color: white; font-weight: bold; cursor: pointer;">
+      Enviar Solicitação
+    </button>
+  </form>
+</section>
+
+  
   <section class="content-section">
     <h2>Me chame direto:</h2>
     <ul style="line-height: 2;">
