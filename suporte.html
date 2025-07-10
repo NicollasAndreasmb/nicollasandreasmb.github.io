@@ -487,10 +487,15 @@
 </footer>
 
 <script>
-  // Atualiza ano no rodapé
+  /**
+   * Atualiza automaticamente o ano no rodapé.
+   */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Busca inteligente
+  /**
+   * Termos de busca para redirecionamento inteligente.
+   * @type {Object<string, string>}
+   */
   const searchTerms = {
     // Sites Personalizados
     "wordpress": "sites-personalizados.html",
@@ -598,6 +603,9 @@
     "portfolio": "index.html"
   };
 
+  /**
+   * Evento de busca com Enter no campo de busca.
+   */
   document.getElementById("searchBox").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
       const term = e.target.value.toLowerCase().trim();
@@ -611,40 +619,64 @@
     }
   });
 
-  // Controle de tema
+  /**
+   * Alternância de temas acessíveis.
+   */
   const themes = ["theme-colorido", "theme-claro", "theme-escuro"];
   let currentThemeIndex = 0;
-
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme && themes.includes(savedTheme)) {
     document.body.className = savedTheme;
     currentThemeIndex = themes.indexOf(savedTheme);
   }
-
-  const btn = document.getElementById("accessibilityBtn");
-  btn.addEventListener("click", () => {
+  document.getElementById("accessibilityBtn").addEventListener("click", () => {
     currentThemeIndex = (currentThemeIndex + 1) % themes.length;
     const newTheme = themes[currentThemeIndex];
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
   });
 
-  // Menu hamburguer mobile
+  /**
+   * Menu hambúrguer responsivo com acessibilidade.
+   */
   const menuToggle = document.getElementById('menuToggle');
   const nav = document.querySelector('header nav');
-
   menuToggle.addEventListener('click', () => {
     nav.classList.toggle('show');
-
-    if(nav.classList.contains('show')) {
-      menuToggle.setAttribute('aria-label', 'Fechar menu');
-      menuToggle.setAttribute('title', 'Fechar menu');
-    } else {
-      menuToggle.setAttribute('aria-label', 'Abrir menu');
-      menuToggle.setAttribute('title', 'Abrir menu');
-    }
+    const isOpen = nav.classList.contains('show');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    menuToggle.setAttribute('title', isOpen ? 'Fechar menu' : 'Abrir menu');
+  });
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('show')) {
+        nav.classList.remove('show');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+        menuToggle.setAttribute('title', 'Abrir menu');
+      }
+    });
   });
 
+  /**
+   * Botão do WhatsApp com mensagem personalizada por página
+   */
+  const pathname = window.location.pathname.toLowerCase();
+  const numero = "5514991817771";
+  let mensagem = "Olá! Encontrei seu site e quero conversar com você.";
+  if (pathname.includes("sites")) {
+    mensagem = "Olá! Vi sua página de sites personalizados e gostaria de saber mais!";
+  } else if (pathname.includes("suporte")) {
+    mensagem = "Olá! Preciso de ajuda com meu computador, vi que você oferece suporte técnico!";
+  } else if (pathname.includes("sistemas")) {
+    mensagem = "Oi! Vi seu portfólio de sistemas e queria conversar sobre um projeto sob medida.";
+  } else if (pathname.includes("contato")) {
+    mensagem = "Olá! Gostaria de entrar em contato com você!";
+  }
+  const linkWhats = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  const botaoWhats = document.getElementById("whatsapp-float");
+  if (botaoWhats) {
+    botaoWhats.setAttribute("href", linkWhats);
+  }
 </script>
 
 </body>
