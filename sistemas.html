@@ -11,7 +11,7 @@
 
   <style>
     /* RESET */
-    body, h1, h2, p, nav, section, header, a, input, footer {
+    body, h1, h2, p, nav, section, header, a, input, footer, button {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
@@ -62,6 +62,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
       transition: background-color 0.4s, color 0.4s;
     }
     .header-left {
@@ -71,6 +72,10 @@
     }
     .header-left img {
       height: 40px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
     }
     nav a {
       margin-left: 20px;
@@ -88,6 +93,7 @@
       font-size: 1em;
       margin-left: 20px;
       width: 200px;
+      max-width: 100%;
     }
     #accessibilityBtn {
       cursor: pointer;
@@ -103,6 +109,7 @@
     #accessibilityBtn:hover {
       color: #8c52ff;
     }
+
     main {
       max-width: 900px;
       margin: 40px auto;
@@ -161,6 +168,53 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* RESPONSIVIDADE: MENU HAMBURGUER */
+    #menuToggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-size: 1.8em;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: inherit;
+        position: absolute;
+        top: 65px; /* logo + padding do header */
+        right: 20px;
+        border: 1px solid currentColor;
+        border-radius: 8px;
+        padding: 10px;
+        width: 180px;
+        z-index: 999;
+      }
+      nav.show {
+        display: flex;
+      }
+      nav a {
+        margin: 10px 0;
+        font-size: 1.1em;
+      }
+      #searchBox {
+        margin-left: 10px;
+        margin-top: 10px;
+        width: calc(100% - 20px);
+      }
+      #menuToggle {
+        display: block;
+      }
+      /* Ajusta container dos botões para ficar alinhado na direita */
+      header > div:nth-child(2) {
+        display: flex;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body class="theme-colorido">
@@ -181,6 +235,8 @@
       <a href="sistemas.html">Sistemas</a>
       <a href="contato.html">Contato</a>
     </nav>
+
+    <button id="menuToggle" aria-label="Abrir menu" title="Abrir menu">☰</button>
     
     <button id="accessibilityBtn" aria-label="Mudar tema" title="Mudar tema">🎨</button>
   </div>
@@ -220,114 +276,116 @@
 </footer>
 
 <script>
+  // Atualiza ano no rodapé
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Busca inteligente
   const searchTerms = {
-  // Sites Personalizados
-  "wordpress": "sites-personalizados.html",
-  "site": "sites-personalizados.html",
-  "sites": "sites-personalizados.html",
-  "landing page": "sites-personalizados.html",
-  "site institucional": "sites-personalizados.html",
-  "página web": "sites-personalizados.html",
-  "criação de site": "sites-personalizados.html",
-  "fazer site": "sites-personalizados.html",
-  "desenvolvimento de site": "sites-personalizados.html",
-  "web design": "sites-personalizados.html",
-  "pagina personalizada": "sites-personalizados.html",
-  "html": "sites-personalizados.html",
-  "css": "sites-personalizados.html",
-  "javascript": "sites-personalizados.html",
-  "loja virtual": "sites-personalizados.html",
-  "ecommerce": "sites-personalizados.html",
-  "blog": "sites-personalizados.html",
-  "portfolio": "sites-personalizados.html",
-  "portfólio": "sites-personalizados.html",
+    // Sites Personalizados
+    "wordpress": "sites-personalizados.html",
+    "site": "sites-personalizados.html",
+    "sites": "sites-personalizados.html",
+    "landing page": "sites-personalizados.html",
+    "site institucional": "sites-personalizados.html",
+    "página web": "sites-personalizados.html",
+    "criação de site": "sites-personalizados.html",
+    "fazer site": "sites-personalizados.html",
+    "desenvolvimento de site": "sites-personalizados.html",
+    "web design": "sites-personalizados.html",
+    "pagina personalizada": "sites-personalizados.html",
+    "html": "sites-personalizados.html",
+    "css": "sites-personalizados.html",
+    "javascript": "sites-personalizados.html",
+    "loja virtual": "sites-personalizados.html",
+    "ecommerce": "sites-personalizados.html",
+    "blog": "sites-personalizados.html",
+    "portfolio": "sites-personalizados.html",
+    "portfólio": "sites-personalizados.html",
 
-  // Suporte Técnico
-  "suporte": "suporte.html",
-  "formatação": "suporte.html",
-  "formatacao": "suporte.html",
-  "formata": "suporte.html",
-  "formatar": "suporte.html",
-  "windows": "suporte.html",
-  "manutenção": "suporte.html",
-  "manutencao": "suporte.html",
-  "atendimento": "suporte.html",
-  "remoto": "suporte.html",
-  "presencial": "suporte.html",
-  "consultoria": "suporte.html",
-  "tecnico": "suporte.html",
-  "técnico": "suporte.html",
-  "conserto": "suporte.html",
-  "problema no pc": "suporte.html",
-  "otimização": "suporte.html",
-  "otimizacao": "suporte.html",
-  "melhorar desempenho": "suporte.html",
-  "computador lento": "suporte.html",
-  "limpeza de sistema": "suporte.html",
-  "formatar notebook": "suporte.html",
-  "problema rede": "suporte.html",
-  "internet lenta": "suporte.html",
+    // Suporte Técnico
+    "suporte": "suporte.html",
+    "formatação": "suporte.html",
+    "formatacao": "suporte.html",
+    "formata": "suporte.html",
+    "formatar": "suporte.html",
+    "windows": "suporte.html",
+    "manutenção": "suporte.html",
+    "manutencao": "suporte.html",
+    "atendimento": "suporte.html",
+    "remoto": "suporte.html",
+    "presencial": "suporte.html",
+    "consultoria": "suporte.html",
+    "tecnico": "suporte.html",
+    "técnico": "suporte.html",
+    "conserto": "suporte.html",
+    "problema no pc": "suporte.html",
+    "otimização": "suporte.html",
+    "otimizacao": "suporte.html",
+    "melhorar desempenho": "suporte.html",
+    "computador lento": "suporte.html",
+    "limpeza de sistema": "suporte.html",
+    "formatar notebook": "suporte.html",
+    "problema rede": "suporte.html",
+    "internet lenta": "suporte.html",
 
-  // Sistemas Sob Demanda
-  "sistema": "sistemas.html",
-  "sistemas": "sistemas.html",
-  "web app": "sistemas.html",
-  "automação": "sistemas.html",
-  "automacao": "sistemas.html",
-  "software": "sistemas.html",
-  "programa": "sistemas.html",
-  "sob demanda": "sistemas.html",
-  "personalizado": "sistemas.html",
-  "dashboard": "sistemas.html",
-  "painel de controle": "sistemas.html",
-  "rpa": "sistemas.html",
-  "processos": "sistemas.html",
-  "automatização": "sistemas.html",
-  "projeto exclusivo": "sistemas.html",
-  "crm": "sistemas.html",
-  "sistema para empresa": "sistemas.html",
-  "gestão": "sistemas.html",
-  "controle financeiro": "sistemas.html",
-  "fluxo de caixa": "sistemas.html",
-  "controle de estoque": "sistemas.html",
+    // Sistemas Sob Demanda
+    "sistema": "sistemas.html",
+    "sistemas": "sistemas.html",
+    "web app": "sistemas.html",
+    "automação": "sistemas.html",
+    "automacao": "sistemas.html",
+    "software": "sistemas.html",
+    "programa": "sistemas.html",
+    "sob demanda": "sistemas.html",
+    "personalizado": "sistemas.html",
+    "dashboard": "sistemas.html",
+    "painel de controle": "sistemas.html",
+    "rpa": "sistemas.html",
+    "processos": "sistemas.html",
+    "automatização": "sistemas.html",
+    "projeto exclusivo": "sistemas.html",
+    "crm": "sistemas.html",
+    "sistema para empresa": "sistemas.html",
+    "gestão": "sistemas.html",
+    "controle financeiro": "sistemas.html",
+    "fluxo de caixa": "sistemas.html",
+    "controle de estoque": "sistemas.html",
 
-  // Contato
-  "contato": "contato.html",
-  "fale comigo": "contato.html",
-  "mensagem": "contato.html",
-  "email": "contato.html",
-  "e-mail": "contato.html",
-  "gmail": "contato.html",
-  "whatsapp": "contato.html",
-  "zap": "contato.html",
-  "linkedin": "contato.html",
-  "currículo": "contato.html",
-  "proposta": "contato.html",
-  "contratar": "contato.html",
-  "orcamento": "contato.html",
-  "orçamento": "contato.html",
-  "dúvida": "contato.html",
-  "duvida": "contato.html",
-  "telefone": "contato.html",
-  "chamar": "contato.html",
-  "suporte direto": "contato.html",
+    // Contato
+    "contato": "contato.html",
+    "fale comigo": "contato.html",
+    "mensagem": "contato.html",
+    "email": "contato.html",
+    "e-mail": "contato.html",
+    "gmail": "contato.html",
+    "whatsapp": "contato.html",
+    "zap": "contato.html",
+    "linkedin": "contato.html",
+    "currículo": "contato.html",
+    "proposta": "contato.html",
+    "contratar": "contato.html",
+    "orcamento": "contato.html",
+    "orçamento": "contato.html",
+    "dúvida": "contato.html",
+    "duvida": "contato.html",
+    "telefone": "contato.html",
+    "chamar": "contato.html",
+    "suporte direto": "contato.html",
 
-  // Home
-  "inicio": "index.html",
-  "início": "index.html",
-  "home": "index.html",
-  "principal": "index.html",
-  "nicollas": "index.html",
-  "serviços": "index.html",
-  "sobre mim": "index.html",
-  "quem sou": "index.html",
-  "meus serviços": "index.html",
-  "dev": "index.html",
-  "portfólio": "index.html",
-  "portfolio": "index.html"
-};
+    // Home
+    "inicio": "index.html",
+    "início": "index.html",
+    "home": "index.html",
+    "principal": "index.html",
+    "nicollas": "index.html",
+    "serviços": "index.html",
+    "sobre mim": "index.html",
+    "quem sou": "index.html",
+    "meus serviços": "index.html",
+    "dev": "index.html",
+    "portfólio": "index.html",
+    "portfolio": "index.html"
+  };
 
   document.getElementById("searchBox").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
@@ -342,6 +400,7 @@
     }
   });
 
+  // Tema
   const themes = ["theme-colorido", "theme-claro", "theme-escuro"];
   let currentThemeIndex = 0;
   const savedTheme = localStorage.getItem('theme');
@@ -356,8 +415,23 @@
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
   });
+
+  // Menu hambúrguer
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.querySelector('header nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+
+    if(nav.classList.contains('show')) {
+      menuToggle.setAttribute('aria-label', 'Fechar menu');
+      menuToggle.setAttribute('title', 'Fechar menu');
+    } else {
+      menuToggle.setAttribute('aria-label', 'Abrir menu');
+      menuToggle.setAttribute('title', 'Abrir menu');
+    }
+  });
 </script>
 
 </body>
 </html>
-
