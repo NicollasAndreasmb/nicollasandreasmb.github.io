@@ -62,6 +62,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
     }
     .header-left {
       display: flex;
@@ -157,6 +158,48 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* MENU RESPONSIVO - HAMBURGUER */
+
+    /* Esconde nav e mostra botão hamburguer no celular */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: inherit;
+        position: absolute;
+        top: 70px; /* abaixo do header */
+        right: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        width: 160px;
+        z-index: 1000;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      #menuToggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.8em;
+        background: transparent;
+        border: none;
+        color: inherit;
+        margin-left: 20px;
+      }
+    }
+
+    /* No desktop, esconde botão */
+    #menuToggle {
+      display: none;
+    }
   </style>
 </head>
 <body class="theme-colorido">
@@ -167,10 +210,10 @@
     <span style="font-size: 1.5em; font-weight: bold;">Nicollas</span>
   </div>
 
-   <div style="display: flex; align-items: center; flex-wrap: wrap;">
+  <div style="display: flex; align-items: center; flex-wrap: wrap;">
 
     <input type="text" id="searchBox" placeholder="Buscar..." />
-    
+
     <nav>
       <a href="index.html">Home</a>
       <a href="sites-personalizados.html">Sites</a>
@@ -178,7 +221,9 @@
       <a href="sistemas.html">Sistemas</a>
       <a href="contato.html">Contato</a>
     </nav>
-    
+
+    <button id="menuToggle" aria-label="Abrir menu" title="Abrir menu">☰</button>
+
     <button id="accessibilityBtn" aria-label="Mudar tema" title="Mudar tema">🎨</button>
   </div>
 </header>
@@ -205,13 +250,13 @@
   </section>
 
   <section class="content-section">
-  <h2>Dúvidas Frequentes</h2>
-  <p><strong>✔ Quanto tempo leva uma formatação?</strong><br>De 1 a 2 horas, dependendo do desempenho do equipamento.</p>
-  <p><strong>✔ Você instala programas após formatar?</strong><br>Sim! Instalo os principais programas gratuitos e essenciais para uso pessoal e profissional.</p>
-  <p><strong>✔ É seguro o suporte remoto?</strong><br>Sim! O acesso é autorizado por você, e você pode encerrar quando quiser.</p>
-  <p><strong>✔ Você atende fora do horário comercial?</strong><br>Sim, com agendamento prévio. Flexibilidade é parte do meu diferencial.</p>
+    <h2>Dúvidas Frequentes</h2>
+    <p><strong>✔ Quanto tempo leva uma formatação?</strong><br>De 1 a 2 horas, dependendo do desempenho do equipamento.</p>
+    <p><strong>✔ Você instala programas após formatar?</strong><br>Sim! Instalo os principais programas gratuitos e essenciais para uso pessoal e profissional.</p>
+    <p><strong>✔ É seguro o suporte remoto?</strong><br>Sim! O acesso é autorizado por você, e você pode encerrar quando quiser.</p>
+    <p><strong>✔ Você atende fora do horário comercial?</strong><br>Sim, com agendamento prévio. Flexibilidade é parte do meu diferencial.</p>
   </section>
-  
+
   <section class="content-section">
     <h2>Fale comigo</h2>
     <p><a href="https://wa.me/5514991817771" target="_blank" rel="noopener">Chamar no WhatsApp</a></p>
@@ -228,112 +273,112 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // Busca inteligente
-const searchTerms = {
-  // Sites Personalizados
-  "wordpress": "sites-personalizados.html",
-  "site": "sites-personalizados.html",
-  "sites": "sites-personalizados.html",
-  "landing page": "sites-personalizados.html",
-  "site institucional": "sites-personalizados.html",
-  "página web": "sites-personalizados.html",
-  "criação de site": "sites-personalizados.html",
-  "fazer site": "sites-personalizados.html",
-  "desenvolvimento de site": "sites-personalizados.html",
-  "web design": "sites-personalizados.html",
-  "pagina personalizada": "sites-personalizados.html",
-  "html": "sites-personalizados.html",
-  "css": "sites-personalizados.html",
-  "javascript": "sites-personalizados.html",
-  "loja virtual": "sites-personalizados.html",
-  "ecommerce": "sites-personalizados.html",
-  "blog": "sites-personalizados.html",
-  "portfolio": "sites-personalizados.html",
-  "portfólio": "sites-personalizados.html",
+  const searchTerms = {
+    // Sites Personalizados
+    "wordpress": "sites-personalizados.html",
+    "site": "sites-personalizados.html",
+    "sites": "sites-personalizados.html",
+    "landing page": "sites-personalizados.html",
+    "site institucional": "sites-personalizados.html",
+    "página web": "sites-personalizados.html",
+    "criação de site": "sites-personalizados.html",
+    "fazer site": "sites-personalizados.html",
+    "desenvolvimento de site": "sites-personalizados.html",
+    "web design": "sites-personalizados.html",
+    "pagina personalizada": "sites-personalizados.html",
+    "html": "sites-personalizados.html",
+    "css": "sites-personalizados.html",
+    "javascript": "sites-personalizados.html",
+    "loja virtual": "sites-personalizados.html",
+    "ecommerce": "sites-personalizados.html",
+    "blog": "sites-personalizados.html",
+    "portfolio": "sites-personalizados.html",
+    "portfólio": "sites-personalizados.html",
 
-  // Suporte Técnico
-  "suporte": "suporte.html",
-  "formatação": "suporte.html",
-  "formatacao": "suporte.html",
-  "formata": "suporte.html",
-  "formatar": "suporte.html",
-  "windows": "suporte.html",
-  "manutenção": "suporte.html",
-  "manutencao": "suporte.html",
-  "atendimento": "suporte.html",
-  "remoto": "suporte.html",
-  "presencial": "suporte.html",
-  "consultoria": "suporte.html",
-  "tecnico": "suporte.html",
-  "técnico": "suporte.html",
-  "conserto": "suporte.html",
-  "problema no pc": "suporte.html",
-  "otimização": "suporte.html",
-  "otimizacao": "suporte.html",
-  "melhorar desempenho": "suporte.html",
-  "computador lento": "suporte.html",
-  "limpeza de sistema": "suporte.html",
-  "formatar notebook": "suporte.html",
-  "problema rede": "suporte.html",
-  "internet lenta": "suporte.html",
+    // Suporte Técnico
+    "suporte": "suporte.html",
+    "formatação": "suporte.html",
+    "formatacao": "suporte.html",
+    "formata": "suporte.html",
+    "formatar": "suporte.html",
+    "windows": "suporte.html",
+    "manutenção": "suporte.html",
+    "manutencao": "suporte.html",
+    "atendimento": "suporte.html",
+    "remoto": "suporte.html",
+    "presencial": "suporte.html",
+    "consultoria": "suporte.html",
+    "tecnico": "suporte.html",
+    "técnico": "suporte.html",
+    "conserto": "suporte.html",
+    "problema no pc": "suporte.html",
+    "otimização": "suporte.html",
+    "otimizacao": "suporte.html",
+    "melhorar desempenho": "suporte.html",
+    "computador lento": "suporte.html",
+    "limpeza de sistema": "suporte.html",
+    "formatar notebook": "suporte.html",
+    "problema rede": "suporte.html",
+    "internet lenta": "suporte.html",
 
-  // Sistemas Sob Demanda
-  "sistema": "sistemas.html",
-  "sistemas": "sistemas.html",
-  "web app": "sistemas.html",
-  "automação": "sistemas.html",
-  "automacao": "sistemas.html",
-  "software": "sistemas.html",
-  "programa": "sistemas.html",
-  "sob demanda": "sistemas.html",
-  "personalizado": "sistemas.html",
-  "dashboard": "sistemas.html",
-  "painel de controle": "sistemas.html",
-  "rpa": "sistemas.html",
-  "processos": "sistemas.html",
-  "automatização": "sistemas.html",
-  "projeto exclusivo": "sistemas.html",
-  "crm": "sistemas.html",
-  "sistema para empresa": "sistemas.html",
-  "gestão": "sistemas.html",
-  "controle financeiro": "sistemas.html",
-  "fluxo de caixa": "sistemas.html",
-  "controle de estoque": "sistemas.html",
+    // Sistemas Sob Demanda
+    "sistema": "sistemas.html",
+    "sistemas": "sistemas.html",
+    "web app": "sistemas.html",
+    "automação": "sistemas.html",
+    "automacao": "sistemas.html",
+    "software": "sistemas.html",
+    "programa": "sistemas.html",
+    "sob demanda": "sistemas.html",
+    "personalizado": "sistemas.html",
+    "dashboard": "sistemas.html",
+    "painel de controle": "sistemas.html",
+    "rpa": "sistemas.html",
+    "processos": "sistemas.html",
+    "automatização": "sistemas.html",
+    "projeto exclusivo": "sistemas.html",
+    "crm": "sistemas.html",
+    "sistema para empresa": "sistemas.html",
+    "gestão": "sistemas.html",
+    "controle financeiro": "sistemas.html",
+    "fluxo de caixa": "sistemas.html",
+    "controle de estoque": "sistemas.html",
 
-  // Contato
-  "contato": "contato.html",
-  "fale comigo": "contato.html",
-  "mensagem": "contato.html",
-  "email": "contato.html",
-  "e-mail": "contato.html",
-  "gmail": "contato.html",
-  "whatsapp": "contato.html",
-  "zap": "contato.html",
-  "linkedin": "contato.html",
-  "currículo": "contato.html",
-  "proposta": "contato.html",
-  "contratar": "contato.html",
-  "orcamento": "contato.html",
-  "orçamento": "contato.html",
-  "dúvida": "contato.html",
-  "duvida": "contato.html",
-  "telefone": "contato.html",
-  "chamar": "contato.html",
-  "suporte direto": "contato.html",
+    // Contato
+    "contato": "contato.html",
+    "fale comigo": "contato.html",
+    "mensagem": "contato.html",
+    "email": "contato.html",
+    "e-mail": "contato.html",
+    "gmail": "contato.html",
+    "whatsapp": "contato.html",
+    "zap": "contato.html",
+    "linkedin": "contato.html",
+    "currículo": "contato.html",
+    "proposta": "contato.html",
+    "contratar": "contato.html",
+    "orcamento": "contato.html",
+    "orçamento": "contato.html",
+    "dúvida": "contato.html",
+    "duvida": "contato.html",
+    "telefone": "contato.html",
+    "chamar": "contato.html",
+    "suporte direto": "contato.html",
 
-  // Home
-  "inicio": "index.html",
-  "início": "index.html",
-  "home": "index.html",
-  "principal": "index.html",
-  "nicollas": "index.html",
-  "serviços": "index.html",
-  "sobre mim": "index.html",
-  "quem sou": "index.html",
-  "meus serviços": "index.html",
-  "dev": "index.html",
-  "portfólio": "index.html",
-  "portfolio": "index.html"
-};
+    // Home
+    "inicio": "index.html",
+    "início": "index.html",
+    "home": "index.html",
+    "principal": "index.html",
+    "nicollas": "index.html",
+    "serviços": "index.html",
+    "sobre mim": "index.html",
+    "quem sou": "index.html",
+    "meus serviços": "index.html",
+    "dev": "index.html",
+    "portfólio": "index.html",
+    "portfolio": "index.html"
+  };
 
   document.getElementById("searchBox").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
@@ -365,8 +410,24 @@ const searchTerms = {
     document.body.className = newTheme;
     localStorage.setItem('theme', newTheme);
   });
+
+  // Menu hamburguer mobile
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.querySelector('header nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+
+    if(nav.classList.contains('show')) {
+      menuToggle.setAttribute('aria-label', 'Fechar menu');
+      menuToggle.setAttribute('title', 'Fechar menu');
+    } else {
+      menuToggle.setAttribute('aria-label', 'Abrir menu');
+      menuToggle.setAttribute('title', 'Abrir menu');
+    }
+  });
+
 </script>
 
 </body>
 </html>
-
