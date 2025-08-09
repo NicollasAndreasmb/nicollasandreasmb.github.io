@@ -29,8 +29,20 @@
     background: #f5f5f5;  /* fundo claro */
     color: #222;          /* fonte escura no tema claro */
 }
+.light-theme .container,
+.light-theme .header,
+.light-theme .job-title,
+.light-theme .job-company,
+.light-theme .job-desc,
+.light-theme a,
+.light-theme .intro,
+.light-theme .icons img {
+  color: #222 !important;
+  filter: none !important; /* remove filtros de brilho que clareiam */
+}
 
-  .container {
+
+ .container {
     max-width: 800px;
     width: 100%;
     background: #111;
@@ -287,6 +299,13 @@
   align-items: center;
 }
 
+.slides .slide img {
+  width: 120px;       /* largura fixa */
+  height: 120px;      /* altura fixa, mesma da largura = quadrado */
+  object-fit: cover;  /* corta a imagem pra não deformar */
+  border-radius: 8px; /* opcional, deixa um canto arredondado estiloso */
+}
+ 
 .contact-form {
   display: flex;
   flex-direction: column;
