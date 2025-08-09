@@ -905,7 +905,7 @@ function animate() {
 
       if (dist < maxDistance) {
         const opacity = 1 - dist / maxDistance;
-        ctx.strokeStyle = `rgba(96, 81, 155, ${opacity * 0.4})`; // roxo suave
+        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.4})`; // roxo suave
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(points[i].x, points[i].y);
@@ -918,7 +918,7 @@ function animate() {
   // Desenha os pontos e conecta ao mouse se perto
   points.forEach(p => {
     // Ponto
-    ctx.fillStyle = 'rgba(96, 81, 155, 0.7)';
+    ctx.fillStyle = 'rgba(166, 161, 225, 0.7)';
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
     ctx.fill();
@@ -930,7 +930,7 @@ function animate() {
       const dist = Math.sqrt(dx*dx + dy*dy);
       if (dist < maxDistance) {
         const opacity = 1 - dist / maxDistance;
-        ctx.strokeStyle = `rgba(96, 81, 155, ${opacity * 0.6})`;
+        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.6})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
