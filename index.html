@@ -269,6 +269,7 @@
   box-shadow: 0 0 10px #ddd;
 }
 .slides {
+  width: 100%;
   display: flex;
   transition: transform 0.4s ease-in-out;
 }
@@ -723,49 +724,43 @@ html {
   });
 
   // 3. SLIDER AUTOMÁTICO
- const slides = document.querySelectorAll(".slide");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+ const slidesContainer = document.querySelector(".slides");
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-  let currentSlide = 0;
+let currentSlide = 0;
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-    });
-  }
+function showSlide(index) {
+  if (index < 0) index = slides.length -1;
+  if (index >= slides.length) index = 0;
+  currentSlide = index;
+  slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+}
 
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
+nextBtn.addEventListener("click", () => {
+  showSlide(currentSlide + 1);
+  resetAutoSlide();
+});
 
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
+prevBtn.addEventListener("click", () => {
+  showSlide(currentSlide - 1);
+  resetAutoSlide();
+});
 
-  // Inicializa com slide 0 ativo
-  showSlide(currentSlide);
+let autoSlideInterval = setInterval(() => {
+  showSlide(currentSlide + 1);
+}, 4000);
 
-  // Eventos dos botões
-  nextBtn.addEventListener("click", () => {
-    nextSlide();
-    resetAutoSlide();
-  });
+function resetAutoSlide() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 4000);
+}
 
-  prevBtn.addEventListener("click", () => {
-    prevSlide();
-    resetAutoSlide();
-  });
-
-  // Troca automática a cada 4 segundos
-  let autoSlideInterval = setInterval(nextSlide, 4000);
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(nextSlide, 4000);
-  }
+// Inicializa
+showSlide(0);
 
   // 4. FORMULÁRIO DE CONTATO
   const contactForm = document.querySelector(".contact-form");
