@@ -665,7 +665,7 @@ html {
 
         <!-- Estoque Financeiro -->
         <div class="slide job">
-          <img src="Maxcon1.png" alt="Estoque Financeiro" class="photo" />
+          <img src="maxcon1.png" alt="Estoque Financeiro" class="photo" />
           <div>
             <h3 class="job-title">Sistema de Estoque Financeiro</h3>
             <p class="job-desc">Sistema para controle de estoque com soma automática de valores e cálculo de custo final.</p>
@@ -676,7 +676,7 @@ html {
 
         <!-- Combinador de Cartas -->
         <div class="slide job">
-          <img src="Maxcon2.png" alt="Combinador de Cartas de Crédito" class="photo" />
+          <img src="maxcon2.png" alt="Combinador de Cartas de Crédito" class="photo" />
           <div>
             <h3 class="job-title">Combinador de Cartas de Crédito</h3>
             <p class="job-desc">Ferramenta para gerar combinações de cotas contempladas, com cálculo e filtros interativos.</p>
@@ -885,16 +885,15 @@ initPoints();
 
 // Atualiza posição dos pontos e desenha tudo
 function animate() {
-  // Fundo do canvas conforme tema
-if (document.body.classList.contains('light-theme')) {
-  ctx.fillStyle = '#f5f5f5'; // fundo claro
-} else {
-  ctx.fillStyle = '#000000'; // fundo escuro
-}
-ctx.fillRect(0, 0, width, height);
+  // pinta fundo de acordo com tema
+  if (document.body.classList.contains('light-theme')) {
+    ctx.fillStyle = '#f5f5f5';
+  } else {
+    ctx.fillStyle = '#000000';
+  }
+  ctx.fillRect(0, 0, width, height);
 
-
-  // Move pontos
+  // move os pontos
   points.forEach(p => {
     p.x += p.vx;
     p.y += p.vy;
@@ -903,7 +902,7 @@ ctx.fillRect(0, 0, width, height);
     if (p.y < 0 || p.y > height) p.vy *= -1;
   });
 
-  // Desenha linhas conectando pontos próximos e também ao mouse
+  // desenha linhas entre pontos próximos
   for (let i = 0; i < pointCount; i++) {
     for (let j = i + 1; j < pointCount; j++) {
       const dx = points[i].x - points[j].x;
@@ -912,7 +911,7 @@ ctx.fillRect(0, 0, width, height);
 
       if (dist < maxDistance) {
         const opacity = 1 - dist / maxDistance;
-        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.4})`; // roxo suave
+        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.4})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(points[i].x, points[i].y);
@@ -922,15 +921,13 @@ ctx.fillRect(0, 0, width, height);
     }
   }
 
-  // Desenha os pontos e conecta ao mouse se perto
+  // desenha pontos e linhas ao mouse
   points.forEach(p => {
-    // Ponto
     ctx.fillStyle = 'rgba(166, 161, 225, 0.7)';
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
     ctx.fill();
 
-    // Linha até mouse
     if (mouse.x !== null && mouse.y !== null) {
       const dx = p.x - mouse.x;
       const dy = p.y - mouse.y;
