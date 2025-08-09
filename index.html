@@ -515,7 +515,7 @@ html {
   width: 100vw;
   height: 100vh;
   z-index: 0; /* atrás de tudo */
-  background: #000;
+  background: transparent;
   pointer-events: none; /* pra não atrapalhar clique */
 }
 
@@ -885,7 +885,14 @@ initPoints();
 
 // Atualiza posição dos pontos e desenha tudo
 function animate() {
-  ctx.clearRect(0, 0, width, height);
+  // Fundo do canvas conforme tema
+if (document.body.classList.contains('light-theme')) {
+  ctx.fillStyle = '#f5f5f5'; // fundo claro
+} else {
+  ctx.fillStyle = '#000000'; // fundo escuro
+}
+ctx.fillRect(0, 0, width, height);
+
 
   // Move pontos
   points.forEach(p => {
