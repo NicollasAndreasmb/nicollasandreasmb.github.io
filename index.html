@@ -546,6 +546,58 @@ html {
   pointer-events: none; /* pra não atrapalhar clique */
 }
 
+/* Estilos básicos para desktop */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile (até 768px por exemplo) */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px; /* ajuste conforme a altura do header */
+    right: 0;
+    background: var(--background-color); /* usa sua cor de fundo */
+    width: 200px;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.8rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Ajuste ícone WhatsApp para ficar menor */
+  .whatsapp-mobile img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
 </style>
 </head>
 <body>
@@ -557,15 +609,21 @@ html {
   <div class="logo-dev">Nicollas<span>Dev</span></div>
 
   <nav>
-    <ul>      
-      <li><a href="#experiences">Experiências</a></li>
+    <ul class="nav-links">
       <li><a href="#about">Sobre Mim</a></li>
+      <li><a href="#experiences">Experiências</a></li>
       <li><a href="#projects">Portfólio</a></li>
       <li><a href="#contact">Contato</a></li>
     </ul>
   </nav>
 
-  <button id="theme-toggle" aria-label="Mudar tema">🌙</button>
+  <div class="header-actions">
+    <button id="theme-toggle" aria-label="Mudar tema">🌙</button>
+    <a href="https://wa.me/5514991817771" target="_blank" aria-label="WhatsApp" class="whatsapp-mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+    <button id="menu-toggle" aria-label="Abrir menu" class="menu-toggle">☰</button>
+  </div>
 </header>
 
 <canvas id="neuron-bg"></canvas>
@@ -988,6 +1046,13 @@ window.addEventListener('mousemove', (e) => {
 window.addEventListener('mouseout', () => {
   mouse.x = null;
   mouse.y = null;
+});
+
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
 });
 
 </script>
