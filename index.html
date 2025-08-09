@@ -470,6 +470,54 @@ html {
   transform: translateX(0);
 }
 
+/* Responsividade */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .container {
+    padding: 1.5rem 1.5rem;
+    max-width: 95%;
+  }
+
+  /* Foto e intro empilhados */
+  .intro, 
+  .photo {
+    width: 100% !important;
+  }
+  
+  .photo {
+    margin-bottom: 1rem;
+  }
+
+  /* O flex que você tinha inline */
+  .intro-photo-wrapper {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slider {
+    max-width: 100%;
+  }
+
+  .header-nav nav ul {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Canvas de fundo */
+#neuron-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* atrás de tudo */
+  background: #000;
+  pointer-events: none; /* pra não atrapalhar clique */
+}
 
 </style>
 </head>
@@ -491,6 +539,8 @@ html {
   <button id="theme-toggle" aria-label="Mudar tema">🌙</button>
 </header>
 
+<canvas id="neuron-bg"></canvas>
+
 <div class="container">
 
   <!-- Bolinhas decorativas -->
@@ -507,7 +557,7 @@ html {
   </div>
 
   <!-- Foto e intro -->
-  <div style="display:flex; align-items:center; gap: 1.5rem; margin-bottom: 1rem;">
+  <div class="intro-photo-wrapper" style="display:flex; align-items:center; gap: 1.5rem; margin-bottom: 1rem;">
     <div class="photo">
       <img src="Nicollas.jpg" alt="Foto Nicollas" />
     </div>
@@ -797,6 +847,114 @@ window.addEventListener('load', () => {
   }, 4000); // 4000ms = 4 segundos
 });
 
+// Fundo neurônio minimalista no canvas
+
+const canvas = document.getElementById('neuron-bg');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let points = [];
+const pointCount = 60;  // quantos pontos
+const maxDistance = 130; // distância máxima para conectar linhas
+
+let mouse = { x: null, y: null };
+
+// Ajusta o tamanho do canvas
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Cria pontos aleatórios
+function initPoints() {
+  points = [];
+  for (let i = 0; i < pointCount; i++) {
+    points.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.3, // velocidade lenta
+      vy: (Math.random() - 0.5) * 0.3
+    });
+  }
+}
+initPoints();
+
+// Atualiza posição dos pontos e desenha tudo
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  // Move pontos
+  points.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > width) p.vx *= -1;
+    if (p.y < 0 || p.y > height) p.vy *= -1;
+  });
+
+  // Desenha linhas conectando pontos próximos e também ao mouse
+  for (let i = 0; i < pointCount; i++) {
+    for (let j = i + 1; j < pointCount; j++) {
+      const dx = points[i].x - points[j].x;
+      const dy = points[i].y - points[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if (dist < maxDistance) {
+        const opacity = 1 - dist / maxDistance;
+        ctx.strokeStyle = `rgba(96, 81, 155, ${opacity * 0.4})`; // roxo suave
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(points[i].x, points[i].y);
+        ctx.lineTo(points[j].x, points[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Desenha os pontos e conecta ao mouse se perto
+  points.forEach(p => {
+    // Ponto
+    ctx.fillStyle = 'rgba(96, 81, 155, 0.7)';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Linha até mouse
+    if (mouse.x !== null && mouse.y !== null) {
+      const dx = p.x - mouse.x;
+      const dy = p.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < maxDistance) {
+        const opacity = 1 - dist / maxDistance;
+        ctx.strokeStyle = `rgba(96, 81, 155, ${opacity * 0.6})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Captura movimento do mouse
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// Quando mouse sai da janela, remove referência
+window.addEventListener('mouseout', () => {
+  mouse.x = null;
+  mouse.y = null;
+});
 
 </script>
 </body>
