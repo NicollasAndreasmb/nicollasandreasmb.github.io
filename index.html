@@ -780,7 +780,7 @@ a:hover {
     <!-- Cabeçalho da página -->
     <div class="header" role="banner">
       <h1>Site Portfolio</h1>
-      <div class="logo-dev">DEV.<span>NICOLLAS ANDREAS</span></div>
+      <div class="logo-dev"><strong style="color:#60519b;">DEV.</strong><span>NICOLLAS ANDREAS</span></div>
     </div>
 
     <!-- Introdução com foto e texto lado a lado -->
@@ -1357,51 +1357,59 @@ const projectsData = [
     }
   ];
 
-  const gridContainer = document.querySelector('.grid-container');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
+  // Mantém tudo igual
+const gridContainer = document.querySelector('.grid-container');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-  let startIndex = 0;
-  const visibleCount = 3;
+let startIndex = 0;
+const visibleCount = 3;
 
-  function renderProjects() {
-    gridContainer.innerHTML = '';
+function renderProjects() {
+  gridContainer.innerHTML = '';
 
-    for (let i = 0; i < visibleCount; i++) {
-      const index = (startIndex + i) % projectsData.length;
-      const p = projectsData[index];
+  for (let i = 0; i < visibleCount; i++) {
+    const index = (startIndex + i) % projectsData.length;
+    const p = projectsData[index];
 
-      const article = document.createElement('article');
-      article.className = 'job';
-      article.setAttribute('role', 'listitem');
-      article.setAttribute('aria-label', p.title);
+    const article = document.createElement('article');
+    article.className = 'job';
+    article.setAttribute('role', 'listitem');
+    article.setAttribute('aria-label', p.title);
 
-      article.innerHTML = `
-        <img src="${p.img}" alt="${p.alt}" class="photo" />
-        <div>
-          <h3 class="job-title">${p.title}</h3>
-          <p class="job-desc">${p.desc}</p>
-          <p class="job-company">${p.company}</p>
-          ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>` : ''}
-        </div>
-      `;
+    article.innerHTML = `
+      <img src="${p.img}" alt="${p.alt}" class="photo" />
+      <div>
+        <h3 class="job-title">${p.title}</h3>
+        <p class="job-desc">${p.desc}</p>
+        <p class="job-company">${p.company}</p>
+        ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>` : ''}
+      </div>
+    `;
 
-      gridContainer.appendChild(article);
-    }
+    gridContainer.appendChild(article);
   }
+}
 
-  prevBtn.addEventListener('click', () => {
-    startIndex = (startIndex - 1 + projectsData.length) % projectsData.length;
-    renderProjects();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    startIndex = (startIndex + 1) % projectsData.length;
-    renderProjects();
-  });
-
-  // Carregar inicialmente
+// Botões continuam normais
+prevBtn.addEventListener('click', () => {
+  startIndex = (startIndex - 1 + projectsData.length) % projectsData.length;
   renderProjects();
+});
+
+nextBtn.addEventListener('click', () => {
+  startIndex = (startIndex + 1) % projectsData.length;
+  renderProjects();
+});
+
+// Auto-play a cada 5 segundos (5000ms)
+setInterval(() => {
+  startIndex = (startIndex + 1) % projectsData.length;
+  renderProjects();
+}, 5000);
+
+// Primeira renderização
+renderProjects();
 </script>
 </body>
 </html>
