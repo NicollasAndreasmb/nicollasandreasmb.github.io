@@ -164,8 +164,12 @@ strong {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
+  display: block;
 }
+
 
 /* ============================================= */
 /* === SEÇÃO DE EXPERIÊNCIAS === */
@@ -761,7 +765,7 @@ a:hover {
   </header>
 
   <!-- Canvas para fundo animado -->
-  <canvas id="neuron-bg" aria-hidden="true"></canvas>
+  <canvas id="neuron-bg"></canvas>
 
   <!-- Container principal do conteúdo -->
   <div class="container">
@@ -917,7 +921,7 @@ a:hover {
 </section>
 
     <!-- Seção de Cursos -->
-    <section class="certifications">
+    <section class="certifications" id="certifications">
       <h2 class="section-title">Certificações & Cursos</h2>
       <ul>
         <li><strong>Técnico em Infórmática - Senac</strong> (2021 - 2023)</li>
@@ -970,7 +974,6 @@ a:hover {
 document.addEventListener('DOMContentLoaded', () => {
   ThemeManager.init();
   Preloader.init();
-  Slider.init();
   ContactForm.init();
   WhatsappTooltip.init();
   CanvasBackground.init();
