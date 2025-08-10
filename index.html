@@ -160,6 +160,13 @@ strong {
   object-fit: cover;
 }
 
+#neuron-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 /* ============================================= */
 /* === SEÇÃO DE EXPERIÊNCIAS === */
 /* ============================================= */
@@ -314,40 +321,6 @@ a:hover {
 
 .btn-link:hover {
   background-color: var(--primary-color);
-}
-
-/* ============================================= */
-/* === SLIDER === */
-/* ============================================= */
-
-.slider {
-  flex: 1;
-  max-width: 600px;
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  box-shadow: 0 0 10px #ddd;
-}
-
-.slides {
-  display: flex;
-  width: 100%;
-  transition: transform 0.4s ease-in-out;
-}
-
-.slide {
-  min-width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.slides .slide img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: var(--border-radius);
 }
 
 /* ============================================= */
@@ -627,6 +600,138 @@ a:hover {
   }
 }
 
+/* ============================================= */
+/* === CORREÇÃO DOS ÍCONES === */
+/* ============================================= */
+
+/* Ícones nas experiências */
+.job .icons img {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain;
+}
+
+/* Ícones nas habilidades */
+.skill img {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Ícones sociais */
+.socials img {
+  width: 24px !important;
+  height: 24px !important;
+  transition: all 0.2s ease;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
+}
+
+/* Ícones de contato */
+#contact .socials img {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* ============================================= */
+/* === ESTILOS DO GRID (adicionar no final) === */
+/* ============================================= */
+
+    .grid-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    flex-grow: 1;
+  }
+
+  .grid-container article.job {
+    background: #222;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 0 10px #60519b;
+    color: #ddd;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  .grid-container article.job:hover {
+    transform: translateY(-5px);
+  }
+
+  .grid-container .photo {
+    width: 120px;
+    height: 90px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .job-title {
+    margin-bottom: 0.3rem;
+    color: #eee;
+    font-size: 1.1rem;
+  }
+
+  .job-desc {
+    font-size: 0.85rem;
+    color: #ccc;
+  }
+
+  .job-company {
+    font-size: 0.8rem;
+    color: #60519b;
+    margin-top: 0.4rem;
+  }
+
+  .btn-slider {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #a6a1e1;
+    transition: color 0.3s ease;
+    padding: 0 10px;
+  }
+  .btn-slider:hover {
+    color: #60519b;
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 0.6rem;
+    padding: 0.3rem 0.8rem;
+    background-color: #a6a1e1;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+  }
+  .btn-link:hover {
+    background-color: #60519b;
+  }
+
+  /* Responsividade */
+  @media (max-width: 900px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
@@ -797,75 +902,19 @@ a:hover {
 
     <!-- Seção Portfólio -->
     <section id="projects" class="container" aria-labelledby="projects-title">
-      <h2 class="section-title" id="projects-title" style="text-align: center; margin-bottom: 0.3rem;">Portfólio</h2>
-      <p class="intro" style="text-align: center; color: #666; margin-bottom: 2rem;">Trabalhos e protótipos recentes</p>
+  <h2 class="section-title" id="projects-title" style="text-align: center; margin-bottom: 0.3rem;">Portfólio</h2>
+  <p class="intro" style="text-align: center; color: #666; margin-bottom: 2rem;">Trabalhos e protótipos recentes</p>
 
-      <div class="slider-container" aria-label="Projetos em slider">
-        <button id="prevBtn" aria-label="Anterior" class="btn-slider">&#8592;</button>
+  <div class="grid-navigation" aria-label="Projetos em grade com navegação">
+    <button id="prevBtn" aria-label="Anterior" class="btn-slider">&#8592;</button>
 
-        <div class="slider" tabindex="0" aria-roledescription="carousel">
-          <div class="slides">
+    <div class="grid-container" role="list" tabindex="0" aria-live="polite" aria-atomic="true">
+      <!-- Projetos aparecem aqui via JS -->
+    </div>
 
-            <!-- Projeto 1 -->
-            <article class="slide job" aria-label="Aplicativo Educacional Infantil">
-              <img src="projetoeducacional.png" alt="App Educacional" class="photo" />
-              <div>
-                <h3 class="job-title">Aplicativo Educacional Infantil</h3>
-                <p class="job-desc">Protótipo no Figma de um aplicativo voltado para crianças, cobrindo matérias gerais do ensino fundamental.</p>
-                <p class="job-company">Tecnologias: Figma</p>
-              </div>
-            </article>
-
-            <!-- Projeto 2 -->
-            <article class="slide job" aria-label="Sistema de Estoque Financeiro">
-              <img src="Maxcon1.png" alt="Estoque Financeiro" class="photo" />
-              <div>
-                <h3 class="job-title">Sistema de Estoque Financeiro</h3>
-                <p class="job-desc">Sistema para controle de estoque com soma automática de valores e cálculo de custo final.</p>
-                <p class="job-company">Tecnologias: PHP, SQL, WordPress</p>
-                <a href="https://www.maxconconsorcios.com.br/cartas-contempladas/" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>
-              </div>
-            </article>
-
-            <!-- Projeto 3 -->
-            <article class="slide job" aria-label="Combinador de Cartas de Crédito">
-              <img src="Maxcon2.png" alt="Combinador de Cartas de Crédito" class="photo" />
-              <div>
-                <h3 class="job-title">Combinador de Cartas de Crédito</h3>
-                <p class="job-desc">Ferramenta para gerar combinações de cotas contempladas, com cálculo e filtros interativos.</p>
-                <p class="job-company">Tecnologias: HTML, CSS, JavaScript, WordPress, SQL, Python</p>
-                <a href="https://www.maxconconsorcios.com.br/busque-cotas-imoveis/" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>
-              </div>
-            </article>
-
-            <!-- Projeto 4 -->
-            <article class="slide job" aria-label="Site Informativo Certificação Digital">
-              <img src="vllcertificacao.png" alt="Site Certificação Digital" class="photo" />
-              <div>
-                <h3 class="job-title">Site Informativo Certificação Digital</h3>
-                <p class="job-desc">Website de 4 páginas com formulário integrado para informações sobre certificação digital.</p>
-                <p class="job-company">Tecnologias: HTML, CSS, JavaScript, Figma</p>
-                <a href="https://vllnet.com.br/" target="_blank" rel="noopener" class="btn-link">Ver Site &rarr;</a>
-              </div>
-            </article>
-
-            <!-- Projeto 5 -->
-            <article class="slide job" aria-label="Site Informativo Floricultura">
-              <img src="floriculturabothanica.png" alt="Site Floricultura" class="photo" />
-              <div>
-                <h3 class="job-title">Site Informativo Floricultura</h3>
-                <p class="job-desc">Website de 4 páginas com informações institucionais para uma floricultura local.</p>
-                <p class="job-company">Tecnologias: WordPress</p>
-                <a href="https://bothanicafloricultura.com/" target="_blank" rel="noopener" class="btn-link">Ver Site &rarr;</a>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <button id="nextBtn" aria-label="Próximo" class="btn-slider">&#8594;</button>
-      </div>
-    </section>
+    <button id="nextBtn" aria-label="Próximo" class="btn-slider">&#8594;</button>
+  </div>
+</section>
 
     <!-- Seção de Cursos -->
     <section class="certifications">
@@ -991,59 +1040,6 @@ const Preloader = {
         const preloader = document.getElementById("preloader");
         if (preloader) preloader.classList.add("fade-out");
       }, 1500);
-    });
-  }
-};
-
-// =============================================
-// === MÓDULO DO SLIDER ===
-// =============================================
-
-const Slider = {
-  elements: {
-    container: document.querySelector(".slides"),
-    slides: document.querySelectorAll(".slide"),
-    prevBtn: document.getElementById("prevBtn"),
-    nextBtn: document.getElementById("nextBtn")
-  },
-  
-  currentSlide: 0,
-  autoSlideInterval: null,
-
-  init() {
-    if (!this.elements.container || this.elements.slides.length === 0 || 
-        !this.elements.prevBtn || !this.elements.nextBtn) return;
-
-    this.showSlide(0);
-    this.resetAutoSlide();
-    this.setupEventListeners();
-  },
-
-  showSlide(index) {
-    // Circular navigation
-    if (index < 0) index = this.elements.slides.length - 1;
-    if (index >= this.elements.slides.length) index = 0;
-
-    this.currentSlide = index;
-    this.elements.container.style.transform = `translateX(-${index * 100}%)`;
-  },
-
-  resetAutoSlide() {
-    clearInterval(this.autoSlideInterval);
-    this.autoSlideInterval = setInterval(() => {
-      this.showSlide(this.currentSlide + 1);
-    }, 4000);
-  },
-
-  setupEventListeners() {
-    this.elements.prevBtn.addEventListener("click", () => {
-      this.showSlide(this.currentSlide - 1);
-      this.resetAutoSlide();
-    });
-
-    this.elements.nextBtn.addEventListener("click", () => {
-      this.showSlide(this.currentSlide + 1);
-      this.resetAutoSlide();
     });
   }
 };
@@ -1310,6 +1306,99 @@ const IntersectionObserverManager = {
     faders.forEach(fader => observer.observe(fader));
   }
 };
+
+// =============================================
+// === MÓDULO DO PORTFÓLIO GRID ================
+// =============================================
+
+const projectsData = [
+    {
+      title: "Aplicativo Educacional Infantil",
+      desc: "Protótipo no Figma de um aplicativo voltado para crianças, cobrindo matérias gerais do ensino fundamental.",
+      company: "Tecnologias: Figma",
+      img: "projetoeducacional.png",
+      alt: "App Educacional",
+      link: null
+    },
+    {
+      title: "Sistema de Estoque Financeiro",
+      desc: "Sistema para controle de estoque com soma automática de valores e cálculo de custo final.",
+      company: "Tecnologias: PHP, SQL, WordPress",
+      img: "Maxcon1.png",
+      alt: "Estoque Financeiro",
+      link: "https://www.maxconconsorcios.com.br/cartas-contempladas/"
+    },
+    {
+      title: "Combinador de Cartas de Crédito",
+      desc: "Ferramenta para gerar combinações de cotas contempladas, com cálculo e filtros interativos.",
+      company: "Tecnologias: HTML, CSS, JavaScript, WordPress, SQL, Python",
+      img: "Maxcon2.png",
+      alt: "Combinador de Cartas de Crédito",
+      link: "https://www.maxconconsorcios.com.br/busque-cotas-imoveis/"
+    },
+    {
+      title: "Site Informativo Certificação Digital",
+      desc: "Website de 4 páginas com formulário integrado para informações sobre certificação digital.",
+      company: "Tecnologias: HTML, CSS, JavaScript, Figma",
+      img: "vllcertificacao.png",
+      alt: "Site Certificação Digital",
+      link: "https://vllnet.com.br/"
+    },
+    {
+      title: "Site Informativo Floricultura",
+      desc: "Website de 4 páginas com informações institucionais para uma floricultura local.",
+      company: "Tecnologias: WordPress",
+      img: "floriculturabothanica.png",
+      alt: "Site Floricultura",
+      link: "https://bothanicafloricultura.com/"
+    }
+  ];
+
+  const gridContainer = document.querySelector('.grid-container');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let startIndex = 0;
+  const visibleCount = 3;
+
+  function renderProjects() {
+    gridContainer.innerHTML = '';
+
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (startIndex + i) % projectsData.length;
+      const p = projectsData[index];
+
+      const article = document.createElement('article');
+      article.className = 'job';
+      article.setAttribute('role', 'listitem');
+      article.setAttribute('aria-label', p.title);
+
+      article.innerHTML = `
+        <img src="${p.img}" alt="${p.alt}" class="photo" />
+        <div>
+          <h3 class="job-title">${p.title}</h3>
+          <p class="job-desc">${p.desc}</p>
+          <p class="job-company">${p.company}</p>
+          ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>` : ''}
+        </div>
+      `;
+
+      gridContainer.appendChild(article);
+    }
+  }
+
+  prevBtn.addEventListener('click', () => {
+    startIndex = (startIndex - 1 + projectsData.length) % projectsData.length;
+    renderProjects();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    startIndex = (startIndex + 1) % projectsData.length;
+    renderProjects();
+  });
+
+  // Carregar inicialmente
+  renderProjects();
 </script>
 </body>
 </html>
