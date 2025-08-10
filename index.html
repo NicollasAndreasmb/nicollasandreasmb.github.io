@@ -9,256 +9,212 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-  
-  /* Reset básico */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  body {
-    background: #000;
-    color: #ddd;  /* tema escuro: fonte clara */
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 2rem 1rem;
+/* === RESET BÁSICO === */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
 }
 
-.light-theme body {
-    background: #f5f5f5;  /* fundo claro */
-    color: #222;          /* fonte escura no tema claro */
-}
-.light-theme .container,
-.light-theme .header,
-.light-theme .job-title,
-.light-theme .job-company,
-.light-theme .job-desc,
-.light-theme a,
-.light-theme .intro,
-.light-theme .icons img {
-  color: #222 !important;
-  filter: none !important; /* remove filtros de brilho que clareiam */
+/* === BASE DO BODY === */
+body {
+  background: #000;
+  color: #ddd;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-body.light-theme p[style] {
-  color: #222 !important; /* força texto escuro mesmo que tenha style inline */
+/* === CONTAINER PRINCIPAL === */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: #111;
+  padding: 2rem 3rem;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 0 30px #bfc0d1;
 }
 
- .container {
-    max-width: 800px;
-    width: 100%;
-    background: #111;
-    padding: 2rem 3rem;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 0 30px #bfc0d1;
-  }
+/* === TÍTULOS === */
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.header h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+}
 
-  /* Título geral */
-  .header {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-  .header h1 {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 0.2rem;
-  }
+/* === LOGO === */
+.logo-dev {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+.logo-dev span {
+  color: #60519b;
+}
 
-  .logo-dev {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ddd;
-  }
-  .logo-dev span {
-    color: #60519b;
-  }
+/* === BOLINHAS DECORATIVAS === */
+.circle {
+  position: absolute;
+  border: 3px solid #60519b;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.circle.big { width: 70px; height: 70px; }
+.circle.medium { width: 35px; height: 35px; }
+.circle.small { width: 15px; height: 15px; }
 
-  /* Bolinhas verdes */
-  .circle {
-    position: absolute;
-    border: 3px solid #60519b;
-    border-radius: 50%;
-    opacity: 0.7;
-  }
-  .circle.big {
-    width: 70px;
-    height: 70px;
-  }
-  .circle.medium {
-    width: 35px;
-    height: 35px;
-  }
-  .circle.small {
-    width: 15px;
-    height: 15px;
-  }
+/* Posicionamento das bolinhas */
+.circle.top-left-big { top: 20px; left: -40px; }
+.circle.left-medium { top: 130px; left: 20px; }
+.circle.right-big { top: 220px; right: -40px; }
+.circle.right-small { top: 360px; right: 100px; }
+.circle.bottom-left-small { bottom: 50px; left: -20px; }
 
-  /* Posicionamento bolinhas da imagem */
-  .circle.top-left-big {
-    top: 20px;
-    left: -40px;
-  }
-  .circle.left-medium {
-    top: 130px;
-    left: 20px;
-  }
-  .circle.right-big {
-    top: 220px;
-    right: -40px;
-  }
-  .circle.right-small {
-    top: 360px;
-    right: 100px;
-  }
-  .circle.bottom-left-small {
-    bottom: 50px;
-    left: -20px;
-  }
-
-  /* Foto circular */
-  .photo {
-  width: 320px;       /* largura maior, ajusta conforme quiser */
-  height: 180px;      /* altura tipo story */
-  border-radius: 12px; /* cantos arredondados, muda pra 0 se quiser quadrado */
+/* === FOTO PRINCIPAL === */
+.photo {
+  width: 320px;
+  height: 180px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1rem;
   border: 3px solid #60519b;
 }
-
 .photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-  /* Intro + nome */
-  .intro {
-    color: #ddd;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .intro strong {
-    color: #60519b;
-  }
-  .intro span.smile {
-    color: #60519b;
-    font-weight: 700;
-  }
 
-  /* Seções */
-  h2.section-title {
-    color: #60519b;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    margin: 2.5rem 0 1rem 0;
-    text-transform: uppercase;
-  }
+/* === INTRO + NOME === */
+.intro {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.intro strong,
+.job-desc strong,
+.about strong {
+  color: #60519b;
+}
+.intro span.smile {
+  font-weight: 700;
+}
 
-  /* Experiências */
-  .experiences {
-    font-size: 0.9rem;
-    color: #bbb;
-    line-height: 1.4;
-  }
-  .job {
-    margin-bottom: 1.5rem;
-  }
-  .job-title {
-    font-weight: 700;
-    color: #eee;
-  }
-  .job-company {
-    font-weight: 600;
-    color: #60519b;
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-  }
-  .job-dates {
-    font-size: 0.7rem;
-    color: #666;
-    font-style: italic;
-    margin-bottom: 0.5rem;
-  }
-  .job-desc {
-    color: #ccc;
-    font-size: 0.85rem;
-  }
-  .job-desc strong {
-    color: #60519b;
-  }
+/* === SEÇÕES === */
+h2.section-title {
+  color: #60519b;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+}
 
-  /* Icons dos frameworks e ferramentas */
-  .icons {
-    margin-top: 0.6rem;
-  }
-  .icons img {
-    width: 22px;
-    height: 22px;
-    margin-right: 6px;
-    filter: brightness(1.2);
-    vertical-align: middle;
-  }
+/* === EXPERIÊNCIAS === */
+.experiences {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.4;
+}
+.job {
+  margin-bottom: 1.5rem;
+}
+.job-title {
+  font-weight: 700;
+  color: #eee;
+}
+.job-company {
+  font-weight: 600;
+  color: #60519b;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+.job-dates {
+  font-size: 0.7rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.job-desc {
+  color: #ccc;
+  font-size: 0.85rem;
+}
 
-  /* About */
-  .about {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    color: #bbb;
-  }
-  .about strong {
-    color: #60519b;
-  }
+/* === ÍCONES DE FERRAMENTAS === */
+.icons {
+  margin-top: 0.6rem;
+}
+.icons img {
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  filter: brightness(1.2);
+  vertical-align: middle;
+}
 
-  /* Foto about */
-  .about-photo {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .about-photo img {
-    width: 140px;
-    border-radius: 8px;
-  }
+/* === SOBRE === */
+.about {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+.about-photo {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.about-photo img {
+  width: 140px;
+  border-radius: 8px;
+}
 
-  /* Social icons bottom */
-  .socials {
-    margin-top: 0.5rem;
-  }
-  .socials a {
-    display: inline-block;
-    margin-right: 10px;
-    filter: brightness(0.8);
-  }
-  .socials a:hover {
-    filter: brightness(1.3);
-  }
-  .socials img {
-    width: 28px;
-    height: 28px;
-  }
+/* === LINKS SOCIAIS === */
+.socials {
+  margin-top: 0.5rem;
+}
+.socials a {
+  display: inline-block;
+  margin-right: 10px;
+  filter: brightness(0.8);
+  transition: filter 0.3s;
+}
+.socials a:hover {
+  filter: brightness(1.3);
+}
+.socials img {
+  width: 28px;
+  height: 28px;
+}
 
-  /* Technology section */
-  .technology {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    color: #bbb;
-    text-align: center;
-  }
+/* === TECNOLOGIAS (CENTRADO) === */
+.technology {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #bbb;
+  text-align: center;
+}
 
-  /* Pequenos detalhes */
-  a {
-    color: #60519b;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+/* === LINKS === */
+a {
+  color: #60519b;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+a:hover {
+  text-decoration: underline;
+}
 
-  .btn-slider {
+/* === BOTÕES === */
+.btn-slider {
   background: none;
   border: none;
   cursor: pointer;
@@ -281,6 +237,8 @@ body.light-theme p[style] {
 .btn-link:hover {
   background-color: #60519b;
 }
+
+/* === SLIDER === */
 .slider {
   flex: 1;
   max-width: 600px;
@@ -289,8 +247,8 @@ body.light-theme p[style] {
   box-shadow: 0 0 10px #ddd;
 }
 .slides {
-  width: 100%;
   display: flex;
+  width: 100%;
   transition: transform 0.4s ease-in-out;
 }
 .slide {
@@ -301,14 +259,14 @@ body.light-theme p[style] {
   gap: 1rem;
   align-items: center;
 }
-
 .slides .slide img {
-  width: 120px;       /* largura fixa */
-  height: 120px;      /* altura fixa, mesma da largura = quadrado */
-  object-fit: cover;  /* corta a imagem pra não deformar */
-  border-radius: 8px; /* opcional, deixa um canto arredondado estiloso */
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
 }
- 
+
+/* === FORMULÁRIO DE CONTATO === */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -316,7 +274,6 @@ body.light-theme p[style] {
   max-width: 500px;
   margin: 0 auto;
 }
-
 .contact-form input,
 .contact-form textarea {
   background: #111;
@@ -329,22 +286,20 @@ body.light-theme p[style] {
   outline: none;
   transition: border-color 0.3s ease;
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: #60519b;
 }
-
 .contact-form button {
   align-self: center;
   cursor: pointer;
   font-size: 1rem;
 }
 
+/* === HEADER FIXO COM NAVEGAÇÃO === */
 .header-nav {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   background: #111;
   border-bottom: 2px solid #60519b;
@@ -354,28 +309,25 @@ body.light-theme p[style] {
   padding: 0.8rem 2rem;
   z-index: 1000;
 }
-
 .header-nav .logo-dev {
   font-size: 1.3rem;
 }
-
 .header-nav nav ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
-
 .header-nav nav ul li a {
   color: #ddd;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .header-nav nav ul li a:hover {
   color: #60519b;
 }
 
+/* === BOTÃO DE TOGGLE DE TEMA === */
 #theme-toggle {
   background: none;
   border: none;
@@ -384,44 +336,49 @@ body.light-theme p[style] {
   color: #ddd;
   transition: transform 0.3s ease;
 }
-
 #theme-toggle:hover {
   transform: rotate(20deg);
 }
-.light-theme {
+
+/* === TEMA CLARO === */
+.light-theme body {
   background: #f5f5f5;
   color: #222;
 }
-
 .light-theme .container {
   background: #fff;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
-
 .light-theme .header-nav {
   background: #fff;
   border-bottom: 2px solid #ccc;
 }
-
 .light-theme a {
   color: #60519b;
 }
-
 .light-theme .job-company {
   color: #333;
 }
-
 .light-theme input,
 .light-theme textarea {
   background: #f9f9f9;
   border-color: #ccc;
   color: #222;
 }
-
-html {
-  scroll-behavior: smooth;
+.light-theme .intro,
+.light-theme .job-desc,
+.light-theme .about,
+.light-theme .icons img {
+  color: #222 !important;
+  filter: none !important;
 }
 
+/* Força texto escuro em inline styles */
+body.light-theme p[style] {
+  color: #222 !important;
+}
+
+/* === PRELOADER === */
 #preloader {
   position: fixed;
   top: 0; left: 0;
@@ -433,26 +390,23 @@ html {
   justify-content: center;
   z-index: 2000;
 }
-
 .preloader-text {
   font-size: 2rem;
   color: #ddd;
   animation: pulse 1.2s infinite;
 }
-
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(1.05); }
 }
-
 .fade-out {
   animation: fadeOut 0.8s forwards;
 }
-
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
 }
 
+/* === WHATSAPP FLOAT === */
 #whatsapp-float {
   position: fixed;
   bottom: 30px;
@@ -463,18 +417,15 @@ html {
   gap: 10px;
   cursor: pointer;
 }
-
 #whatsapp-float a img {
   width: 50px;
   height: 50px;
   filter: drop-shadow(0 0 5px #60519b);
   transition: transform 0.3s ease;
 }
-
 #whatsapp-float a:hover img {
   transform: scale(1.1);
 }
-
 #whatsapp-tooltip {
   background-color: #60519b;
   color: #000;
@@ -489,84 +440,72 @@ html {
   transition: opacity 0.5s ease, transform 0.5s ease;
   user-select: none;
 }
-
-/* Mostrar o balãozinho com animação */
 #whatsapp-float.show-tooltip #whatsapp-tooltip {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
 }
 
-/* Responsividade */
+/* === RESPONSIVIDADE === */
 @media (max-width: 600px) {
   body {
     padding: 1rem 0.5rem;
   }
-
   .container {
     padding: 1.5rem 1.5rem;
     max-width: 95%;
   }
-
-  /* Foto e intro empilhados */
-  .intro, 
-  .photo {
+  .intro, .photo {
     width: 100% !important;
   }
-  
   .photo {
     margin-bottom: 1rem;
   }
-
-  /* O flex que você tinha inline */
   .intro-photo-wrapper {
     flex-direction: column !important;
     align-items: center;
     text-align: center;
   }
-
   .slider {
     max-width: 100%;
   }
-
   .header-nav nav ul {
     gap: 1rem;
     font-size: 0.9rem;
   }
 }
 
-/* Canvas de fundo */
+/* === BACKGROUND NEURONAL - CANVAS === */
 #neuron-bg {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* atrás de tudo */
+  z-index: 0;
   background: transparent;
-  pointer-events: none; /* pra não atrapalhar clique */
+  pointer-events: none;
 }
 
-/* Estilos básicos para desktop */
+/* === NAVEGAÇÃO E HEADER MOBILE === */
 .nav-links {
   display: flex;
   gap: 1.5rem;
   list-style: none;
 }
-
 .header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Mobile (até 768px por exemplo) */
+/* Mobile: esconder nav-links padrão */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     position: absolute;
-    top: 60px; /* ajuste conforme a altura do header */
+    top: 60px;
     right: 0;
-    background: var(--background-color); /* usa sua cor de fundo */
+    background: var(--background-color, #111);
     width: 200px;
     flex-direction: column;
     padding: 1rem;
@@ -574,58 +513,40 @@ html {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 1000;
   }
-
   .nav-links.show {
     display: flex;
   }
-
   .header-actions {
     gap: 0.5rem;
   }
-
   .menu-toggle {
     font-size: 1.8rem;
     background: transparent;
     border: none;
     cursor: pointer;
   }
-
-  /* Ajuste ícone WhatsApp para ficar menor */
-  /* Desktop: esconde WhatsApp e hambúrguer */
-.whatsapp-mobile,
-#menu-toggle {
-  display: none;
-}
-
-/* Mobile: mostra */
-@media (max-width: 768px) {
+  /* WhatsApp e menu toggle aparecem só no mobile */
   .whatsapp-mobile,
   #menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
-
-  /* Esconde o menu fixo e mostra só no toggle */
-  .nav-links {
+  /* Esconde ícones no desktop */
+  #menu-toggle,
+  #whatsapp-header {
     display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #111; /* ou a variável que estiver usando */
-    width: 200px;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0 0 0 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  .nav-links.show {
-    display: flex;
   }
 }
 
-/* Padrão: esconder elementos mobile no desktop */
+/* Mostrar tooltip em mobile */
+.tooltip-container.show-tooltip .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -5px);
+}
+
+/* Padrão esconder no desktop */
 #menu-toggle,
 #whatsapp-header {
   display: none;
@@ -641,7 +562,6 @@ html {
     cursor: pointer;
     margin-right: 1rem;
   }
-
   #whatsapp-header {
     display: inline-block;
     font-size: 1.5rem;
@@ -649,12 +569,11 @@ html {
     text-decoration: none;
     color: inherit;
   }
-
   .nav-links {
     display: none;
     flex-direction: column;
     gap: 1rem;
-    background-color: var(--header-bg);
+    background-color: var(--header-bg, #111);
     position: absolute;
     top: 60px;
     right: 0;
@@ -662,78 +581,6 @@ html {
     width: 200px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
-
-  .nav-links.show {
-    display: flex;
-  }
-}
-
-
-/* Esconde no desktop */
-#menu-toggle,
-#whatsapp-header {
-  display: none;
-}
-
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip-text {
-  visibility: hidden;
-  opacity: 0;
-  background-color: var(--header-bg, #333);
-  color: #fff;
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: inline-block;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-right: 1rem;
-  }
-
-  #whatsapp-header {
-    display: inline-block;
-    font-size: 1.5rem;
-    margin-left: 0.5rem;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .tooltip-container.show-tooltip .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(-50%, -5px);
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: var(--header-bg);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    padding: 1rem;
-    width: 200px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
   .nav-links.show {
     display: flex;
   }
@@ -741,293 +588,313 @@ html {
 </style>
 </head>
 <body>
- <div id="preloader">
+  <!-- Preloader animado na abertura -->
+  <div id="preloader">
     <h1 class="preloader-text">Nicollas<span>Dev</span></h1>
   </div>
   
-<header class="header-nav">
-  <div class="logo-dev">Nicollas<span>Dev</span></div>
+  <!-- Cabeçalho fixo com navegação e ações -->
+  <header class="header-nav">
+    <div class="logo-dev">Nicollas<span>Dev</span></div>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre Mim</a></li>
-      <li><a href="#experiences">Experiências</a></li>
-      <li><a href="#projects">Portfólio</a></li>
-      <li><a href="#contact">Contato</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul class="nav-links" role="menu">
+        <li><a href="#about" role="menuitem">Sobre Mim</a></li>
+        <li><a href="#experiences" role="menuitem">Experiências</a></li>
+        <li><a href="#projects" role="menuitem">Portfólio</a></li>
+        <li><a href="#contact" role="menuitem">Contato</a></li>
+      </ul>
+    </nav>
 
-  <div class="header-actions">
-    <button id="theme-toggle" aria-label="Mudar tema">🌙</button>
-    <a href="https://wa.me/5514991817771" target="_blank" aria-label="WhatsApp" class="whatsapp-mobile">
+    <div class="header-actions">
+      <button id="theme-toggle" aria-label="Mudar tema" title="Mudar tema">🌙</button>
+      <a href="https://wa.me/5514991817771" target="_blank" rel="noopener" aria-label="WhatsApp" class="whatsapp-mobile" title="WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
+      <button id="menu-toggle" aria-label="Abrir menu" class="menu-toggle" title="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Canvas para fundo animado -->
+  <canvas id="neuron-bg" aria-hidden="true"></canvas>
+
+  <!-- Container principal do conteúdo -->
+  <div class="container">
+
+    <!-- Bolinhas decorativas no fundo -->
+    <div class="circle big top-left-big"></div>
+    <div class="circle medium left-medium"></div>
+    <div class="circle big right-big"></div>
+    <div class="circle small right-small"></div>
+    <div class="circle small bottom-left-small"></div>
+
+    <!-- Cabeçalho da página -->
+    <div class="header" role="banner">
+      <h1>Site Portfolio</h1>
+      <div class="logo-dev">DEV.<span>NICOLLAS ANDREAS</span></div>
+    </div>
+
+    <!-- Introdução com foto e texto lado a lado -->
+    <div class="intro-photo-wrapper" style="display:flex; align-items:center; gap: 1.5rem; margin-bottom: 1rem;">
+      <div class="photo" aria-label="Foto de Nicollas Andreas">
+        <img src="Nicollas.jpg" alt="Foto Nicollas" />
+      </div>
+      <p class="intro">
+        Olá, eu sou o <strong>Nicollas Andreas</strong> <span class="smile" aria-hidden="true">:)</span><br />
+        Desenvolvedor de <strong>Software</strong>.
+      </p>
+    </div>
+
+    <!-- Seção de Experiências -->
+    <section id="experiences" aria-labelledby="experiences-title">
+      <h2 class="section-title" id="experiences-title">EXPERIÊNCIAS</h2>
+      <p style="color:#999; font-size: 0.8rem; margin-bottom:1rem;">Onde estive empregado</p>
+
+      <div class="experiences">
+
+        <!-- Experiência 1 -->
+        <article class="job" aria-label="Experiência Colaborador em Hackathons e Projetos Acadêmicos">
+          <h3 class="job-title">Colaborador / Hackathons e Projetos Acadêmicos</h3>
+          <time class="job-dates" datetime="2019-01">2019 - Presente (Remoto e Presencial)</time>
+          <p class="job-desc">
+            Participação ativa na idealização e design UX/UI usando Figma e WordPress, trazendo soluções intuitivas e funcionais para projetos de faculdade e competições. Experiência em colaboração multidisciplinar e entrega de protótipos interativos.
+          </p>
+          <div class="icons" aria-label="Tecnologias usadas">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+          </div>
+        </article>
+
+        <!-- Experiência 2 -->
+        <article class="job" aria-label="Experiência Fullstack Developer na Maxcon">
+          <h3 class="job-title">Fullstack Developer Solo / Maxcon (PJ, Remoto)</h3>
+          <time class="job-dates" datetime="2025-01">Jan/2025 - Jul/2025</time>
+          <p class="job-desc">
+            Desenvolvimento fullstack autônomo, criação de site em WordPress, automações com Python e construção de simuladores personalizados. Gerenciamento completo do ciclo de projetos, desde a concepção até a entrega e manutenção.
+          </p>
+          <div class="icons" aria-label="Tecnologias usadas">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+          </div>
+        </article>
+
+        <!-- Skills técnicas gerais -->
+        <article class="job" aria-label="Skills técnicas">
+          <h3 class="job-title">Skills Técnicas</h3>
+          <p class="job-desc">
+            Domínio em JavaScript, Python, HTML5, CSS3, banco de dados MySQL, além de design UX/UI com Figma e desenvolvimento rápido em WordPress. Experiência com design responsivo, automação e sistemas web funcionais.
+          </p>
+          <div class="icons" aria-label="Tecnologias usadas">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">SOBRE MIM</h2>
+
+      <div class="about">
+        <strong>Nicollas Andreas, <span style="color:#60519b;">Estudante de Ciências da Computação & Desenvolvedor Fullstack</span></strong>
+        <p>
+          Apaixonado por tecnologia e design, estou mergulhado no mundo da programação e do desenvolvimento web. Com experiência prática em projetos acadêmicos, hackathons e no mercado, atuo como fullstack developer, criando soluções eficientes e interfaces intuitivas.<br />
+          Minha especialidade vai de automações em Python e desenvolvimento com JavaScript até design UX/UI no Figma e sites em WordPress. Sempre buscando juntar lógica, criatividade e usabilidade para entregar produtos que fazem sentido.<br />
+          Estudo profundamente cálculo, geometria analítica e psicologia aplicada para ampliar minha visão tecnológica e humana — porque tecnologia sem empatia não funciona.
+        </p>
+
+        <div class="about-photo" aria-label="Redes sociais e tecnologias">
+          <div>
+            <p><strong>Trabalho com</strong> <span style="color:#60519b;">tecnologia que transforma</span></p>
+            <div class="socials">
+              <a href="https://www.figma.com/files/team/1425985709550691948/user/1425985707596955593?fuid=1425985707596955593" title="Figma" aria-label="Figma"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma" /></a>
+              <a href="https://github.com/NicollasAndreasmb" title="GitHub" aria-label="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" /></a>
+              <a href="https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/" title="LinkedIn" aria-label="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" /></a>
+              <a href="https://huggingface.co/NicollasMarques" title="Hugging Face" aria-label="Hugging Face"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968474.png" alt="Hugging Face" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Portfólio -->
+    <section id="projects" class="container" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title" style="text-align: center; margin-bottom: 0.3rem;">Portfólio</h2>
+      <p class="intro" style="text-align: center; color: #666; margin-bottom: 2rem;">Trabalhos e protótipos recentes</p>
+
+      <div class="slider-container" aria-label="Projetos em slider">
+        <button id="prevBtn" aria-label="Anterior" class="btn-slider">&#8592;</button>
+
+        <div class="slider" tabindex="0" aria-roledescription="carousel">
+          <div class="slides">
+
+            <!-- Projeto 1 -->
+            <article class="slide job" aria-label="Aplicativo Educacional Infantil">
+              <img src="projetoeducacional.png" alt="App Educacional" class="photo" />
+              <div>
+                <h3 class="job-title">Aplicativo Educacional Infantil</h3>
+                <p class="job-desc">Protótipo no Figma de um aplicativo voltado para crianças, cobrindo matérias gerais do ensino fundamental.</p>
+                <p class="job-company">Tecnologias: Figma</p>
+              </div>
+            </article>
+
+            <!-- Projeto 2 -->
+            <article class="slide job" aria-label="Sistema de Estoque Financeiro">
+              <img src="Maxcon1.png" alt="Estoque Financeiro" class="photo" />
+              <div>
+                <h3 class="job-title">Sistema de Estoque Financeiro</h3>
+                <p class="job-desc">Sistema para controle de estoque com soma automática de valores e cálculo de custo final.</p>
+                <p class="job-company">Tecnologias: PHP, SQL, WordPress</p>
+                <a href="https://www.maxconconsorcios.com.br/cartas-contempladas/" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>
+              </div>
+            </article>
+
+            <!-- Projeto 3 -->
+            <article class="slide job" aria-label="Combinador de Cartas de Crédito">
+              <img src="Maxcon2.png" alt="Combinador de Cartas de Crédito" class="photo" />
+              <div>
+                <h3 class="job-title">Combinador de Cartas de Crédito</h3>
+                <p class="job-desc">Ferramenta para gerar combinações de cotas contempladas, com cálculo e filtros interativos.</p>
+                <p class="job-company">Tecnologias: HTML, CSS, JavaScript, WordPress, SQL, Python</p>
+                <a href="https://www.maxconconsorcios.com.br/busque-cotas-imoveis/" target="_blank" rel="noopener" class="btn-link">Ver Projeto &rarr;</a>
+              </div>
+            </article>
+
+            <!-- Projeto 4 -->
+            <article class="slide job" aria-label="Site Informativo Certificação Digital">
+              <img src="vllcertificacao.png" alt="Site Certificação Digital" class="photo" />
+              <div>
+                <h3 class="job-title">Site Informativo Certificação Digital</h3>
+                <p class="job-desc">Website de 4 páginas com formulário integrado para informações sobre certificação digital.</p>
+                <p class="job-company">Tecnologias: HTML, CSS, JavaScript, Figma</p>
+                <a href="https://vllnet.com.br/" target="_blank" rel="noopener" class="btn-link">Ver Site &rarr;</a>
+              </div>
+            </article>
+
+            <!-- Projeto 5 -->
+            <article class="slide job" aria-label="Site Informativo Floricultura">
+              <img src="floriculturabothanica.png" alt="Site Floricultura" class="photo" />
+              <div>
+                <h3 class="job-title">Site Informativo Floricultura</h3>
+                <p class="job-desc">Website de 4 páginas com informações institucionais para uma floricultura local.</p>
+                <p class="job-company">Tecnologias: WordPress</p>
+                <a href="https://bothanicafloricultura.com/" target="_blank" rel="noopener" class="btn-link">Ver Site &rarr;</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <button id="nextBtn" aria-label="Próximo" class="btn-slider">&#8594;</button>
+      </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="container" aria-labelledby="contact-title" style="text-align: center;">
+      <h2 class="section-title" id="contact-title">Contato</h2>
+      <p class="intro" style="margin-bottom: 2rem;">
+        Você tem um novo projeto?<br />
+        <strong>Entre em contato comigo e vamos desenvolver sua ideia!</strong>
+      </p>
+
+      <form action="https://formsubmit.co/contatonicdev@gmail.com" method="POST" class="contact-form" aria-label="Formulário de contato">
+        <input type="text" name="name" placeholder="Seu nome" required aria-required="true" />
+        <input type="email" name="email" placeholder="Seu e-mail" required aria-required="true" />
+        <textarea name="message" placeholder="Descreva sua ideia..." rows="5" required aria-required="true"></textarea>
+        <button type="submit" class="btn-link">Enviar Mensagem</button>
+
+        <!-- Configurações extras do FormSubmit -->
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="box" />
+      </form>
+
+      <div class="socials" style="margin-top: 2rem;">
+        <a href="https://github.com/NicollasAndreasmb" target="_blank" rel="noopener" aria-label="GitHub"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" /></a>
+        <a href="https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" /></a>
+        <a href="mailto:contatonicdev@gmail.com" aria-label="Enviar e-mail"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="E-mail" /></a>
+      </div>
+    </section>
+  </div>
+
+  <!-- WhatsApp flutuante no canto inferior -->
+  <div id="whatsapp-float" role="complementary" aria-label="WhatsApp flutuante">
+    <a href="https://wa.me/5514991817771" target="_blank" rel="noopener" aria-label="WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
-    <button id="menu-toggle" aria-label="Abrir menu" class="menu-toggle">☰</button>
+    <div id="whatsapp-tooltip" role="tooltip" aria-hidden="true">Entre em contato</div>
   </div>
-</header>
-
-<canvas id="neuron-bg"></canvas>
-
-<div class="container">
-
-  <!-- Bolinhas decorativas -->
-  <div class="circle big top-left-big"></div>
-  <div class="circle medium left-medium"></div>
-  <div class="circle big right-big"></div>
-  <div class="circle small right-small"></div>
-  <div class="circle small bottom-left-small"></div>
-
-  <!-- Título geral -->
-  <div class="header">
-    <h1>Site Portfolio</h1>
-    <div class="logo-dev">DEV.<span>NICOLLAS ANDREAS</span></div>
-  </div>
-
-  <!-- Foto e intro -->
-  <div class="intro-photo-wrapper" style="display:flex; align-items:center; gap: 1.5rem; margin-bottom: 1rem;">
-    <div class="photo">
-      <img src="Nicollas.jpg" alt="Foto Nicollas" />
-    </div>
-    <p class="intro">Olá, eu sou o <strong>Nicollas Andreas</strong> <span class="smile">:)</span><br />
-      Desenvolvedor de <strong>Software</strong>.</p>
-  </div>
-
-  <!-- Experiences -->
-<section id="experiences">
-  <h2 class="section-title">EXPERIENCES</h2>
-  <p style="color:#999; font-size: 0.8rem; margin-bottom:1rem;">Onde estive empregado</p>
-
-  <div class="experiences">
-    <div class="job">
-    <div class="job-title"> Colaborador / Hackathons e Projetos Acadêmicos</div>
-    <div class="job-dates">2019 - Presente (Remoto e Presencial)</div>
-    <div class="job-desc">
-      Participação ativa na idealização e design UX/UI usando Figma e WordPress, trazendo soluções intuitivas e funcionais para projetos de faculdade e competições. Experiência em colaboração multidisciplinar e entrega de protótipos interativos.
-    </div>
-    <div class="icons">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
-    </div>
-  </div>
-
-    <div class="job">
-    <div class="job-title"> Fullstack Developer Solo / Maxcon (PJ, Remoto)</div>
-    <div class="job-dates">Jan/2025 - Jul/2025</div>
-    <div class="job-desc">
-      Desenvolvimento fullstack autônomo, criação de site em WordPress, automações com Python e construção de simuladores personalizados. Gerenciamento completo do ciclo de projetos, desde a concepção até a entrega e manutenção.
-    </div>
-    <div class="icons">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-    </div>
-  </div>
-
-  <div class="job">
-    <div class="job-title"> Skills Técnicas</div>
-    <div class="job-desc">
-      Domínio em JavaScript, Python, HTML5, CSS3, banco de dados MySQL, além de design UX/UI com Figma e desenvolvimento rápido em WordPress. Experiência com design responsivo, automação e sistemas web funcionais.
-    </div>
-    <div class="icons">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
-    </div>
-</div>
-</section>
-
- <!-- About -->
-<section id="about"> 
-<h2 class="section-title">SOBRE MIM</h2>
-<div class="about">
-  <strong>Nicollas Andreas, <span style="color:#60519b;">Estudante de Ciências da Computação & Desenvolvedor Fullstack</span></strong>
-  <p>
-    Apaixonado por tecnologia e design, estou mergulhado no mundo da programação e do desenvolvimento web. Com experiência prática em projetos acadêmicos, hackathons e no mercado, atuo como fullstack developer, criando soluções eficientes e interfaces intuitivas.<br>
-    Minha especialidade vai de automações em Python e desenvolvimento com JavaScript até design UX/UI no Figma e sites em WordPress. Sempre buscando juntar lógica, criatividade e usabilidade para entregar produtos que fazem sentido.<br>
-    Estudo profundamente cálculo, geometria analítica e psicologia aplicada para ampliar minha visão tecnológica e humana — porque tecnologia sem empatia não funciona.
-  </p>
-
-  <div class="about-photo">
-    <div>
-      <p><strong>Trabalho com</strong> <span style="color:#60519b;">tecnologia que transforma</span></p>
-      <div class="socials">
-        <a href="#" title="Figma"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma" /></a>
-        <a href="#" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" /></a>
-        <a href="#" title="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" /></a>
-        <a href="#" title="Hugging Face"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968474.png" alt="Hugging Face" /></a>
-        <a href="#" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-  <!-- Projects -->
-<section id="projects" class="container">
-  <h2 class="section-title" style="text-align: center; margin-bottom: 0.3rem;">Portfólio</h2>
-  <p class="intro" style="text-align: center; color: #666; margin-bottom: 2rem;">Trabalhos e protótipos recentes</p>
-
-  <div class="slider-container">
-    <button id="prevBtn" aria-label="Anterior" class="btn-slider">&#8592;</button>
-
-    <div class="slider">
-      <div class="slides">
-
-        <!-- App Educacional -->
-        <div class="slide job">
-          <img src="projetoeducacional.png" alt="App Educacional" class="photo" />
-          <div>
-            <h3 class="job-title">Aplicativo Educacional Infantil</h3>
-            <p class="job-desc">Protótipo no Figma de um aplicativo voltado para crianças, cobrindo matérias gerais do ensino fundamental.</p>
-            <p class="job-company">Tecnologias: Figma</p>
-          </div>
-        </div>
-
-        <!-- Estoque Financeiro -->
-        <div class="slide job">
-          <img src="Maxcon1.png" alt="Estoque Financeiro" class="photo" />
-          <div>
-            <h3 class="job-title">Sistema de Estoque Financeiro</h3>
-            <p class="job-desc">Sistema para controle de estoque com soma automática de valores e cálculo de custo final.</p>
-            <p class="job-company">Tecnologias: PHP, SQL, WordPress</p>
-            <a href="https://www.maxconconsorcios.com.br/cartas-contempladas/" target="_blank" class="btn-link">Ver Projeto &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Combinador de Cartas -->
-        <div class="slide job">
-          <img src="Maxcon2.png" alt="Combinador de Cartas de Crédito" class="photo" />
-          <div>
-            <h3 class="job-title">Combinador de Cartas de Crédito</h3>
-            <p class="job-desc">Ferramenta para gerar combinações de cotas contempladas, com cálculo e filtros interativos.</p>
-            <p class="job-company">Tecnologias: HTML, CSS, JavaScript, WordPress, SQL, Python</p>
-            <a href="https://www.maxconconsorcios.com.br/busque-cotas-imoveis/" target="_blank" class="btn-link">Ver Projeto &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Site Certificação Digital -->
-        <div class="slide job">
-          <img src="vllcertificacao.png" alt="Site Certificação Digital" class="photo" />
-          <div>
-            <h3 class="job-title">Site Informativo Certificação Digital</h3>
-            <p class="job-desc">Website de 4 páginas com formulário integrado para informações sobre certificação digital.</p>
-            <p class="job-company">Tecnologias: HTML, CSS, JavaScript, Figma</p>
-            <a href="https://vllnet.com.br/" target="_blank" class="btn-link">Ver Site &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Site Floricultura -->
-        <div class="slide job">
-          <img src="floriculturabothanica.png" alt="Site Floricultura" class="photo" />
-          <div>
-            <h3 class="job-title">Site Informativo Floricultura</h3>
-            <p class="job-desc">Website de 4 páginas com informações institucionais para uma floricultura local.</p>
-            <p class="job-company">Tecnologias: WordPress</p>
-            <a href="https://bothanicafloricultura.com/" target="_blank" class="btn-link">Ver Site &rarr;</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <button id="nextBtn" aria-label="Próximo" class="btn-slider">&#8594;</button>
-  </div>
-</section>
-
-<section id="contact" class="container" style="text-align: center;">
-  <h2 class="section-title">Contato</h2>
-  <p class="intro" style="margin-bottom: 2rem;">
-    Você tem um novo projeto?<br>
-    <strong>Entre em contato comigo e vamos desenvolver sua ideia!</strong>
-  </p>
-
-  <form action="https://formsubmit.co/contatonicdev@gmail.com" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Seu nome" required>
-    <input type="email" name="email" placeholder="Seu e-mail" required>
-    <textarea name="message" placeholder="Descreva sua ideia..." rows="5" required></textarea>
-    <button type="submit" class="btn-link">Enviar Mensagem</button>
-
-    <!-- Configurações extras do FormSubmit -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
-  </form>
-
-  <div class="socials" style="margin-top: 2rem;">
-    <a href="https://github.com/NicollasAndreasmb" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"></a>
-    <a href="https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"></a>
-    <a href="mailto:contatonicdev@gmail.com"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="E-mail"></a>
-  </div>
-</section>
-<div id="whatsapp-float">
-  <a href="https://wa.me/5514991817771" target="_blank" aria-label="WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-  </a>
-  <div id="whatsapp-tooltip">Entre em contato</div>
-</div>
 <script>
-  const themeToggle = document.getElementById('theme-toggle');
-  const body = document.body;
+  // ==== Variáveis globais de DOM ====
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
 
-  // 1. TROCA DE TEMA (claro/escuro)
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      themeToggle.textContent = body.classList.contains('light-theme') ? '☀️' : '🌙';
-      
-      // Salvar preferência
-      localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
-    });
+const slidesContainer = document.querySelector(".slides");
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-    // Carregar preferência
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-theme');
-      themeToggle.textContent = '☀️';
-    }
+const contactForm = document.querySelector(".contact-form");
+
+const canvas = document.getElementById('neuron-bg');
+const ctx = canvas?.getContext('2d');
+
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+const whatsappFloat = document.getElementById('whatsapp-float');
+
+let currentSlide = 0;
+let autoSlideInterval;
+
+// ====== 1. TROCA DE TEMA (Claro / Escuro) ======
+function initTheme() {
+  if (!themeToggle) return;
+
+  // Carrega preferencia salva
+  if (localStorage.getItem('theme') === 'light') {
+    body.classList.add('light-theme');
+    themeToggle.textContent = '☀️';
   }
 
-  // 2. PRELOADER (Animação de abertura)
+  // Evento de clique para alternar
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-theme');
+    const isLight = body.classList.contains('light-theme');
+    themeToggle.textContent = isLight ? '☀️' : '🌙';
+
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+}
+
+// ====== 2. PRELOADER ======
+function initPreloader() {
   window.addEventListener("load", () => {
     setTimeout(() => {
       const preloader = document.getElementById("preloader");
       if (preloader) preloader.classList.add("fade-out");
     }, 1500);
   });
+}
 
-  // 3. SLIDER AUTOMÁTICO
- const slidesContainer = document.querySelector(".slides");
-const slides = document.querySelectorAll(".slide");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-let currentSlide = 0;
-
+// ====== 3. SLIDER ======
 function showSlide(index) {
-  if (index < 0) index = slides.length -1;
+  if (index < 0) index = slides.length - 1;
   if (index >= slides.length) index = 0;
+
   currentSlide = index;
   slidesContainer.style.transform = `translateX(-${index * 100}%)`;
 }
-
-nextBtn.addEventListener("click", () => {
-  showSlide(currentSlide + 1);
-  resetAutoSlide();
-});
-
-prevBtn.addEventListener("click", () => {
-  showSlide(currentSlide - 1);
-  resetAutoSlide();
-});
-
-let autoSlideInterval = setInterval(() => {
-  showSlide(currentSlide + 1);
-}, 4000);
 
 function resetAutoSlide() {
   clearInterval(autoSlideInterval);
@@ -1036,177 +903,200 @@ function resetAutoSlide() {
   }, 4000);
 }
 
-// Inicializa
-showSlide(0);
+function initSlider() {
+  if (!slidesContainer || slides.length === 0 || !prevBtn || !nextBtn) return;
 
-  // 4. FORMULÁRIO DE CONTATO
-  const contactForm = document.querySelector(".contact-form");
+  showSlide(0);
+  resetAutoSlide();
 
-  if (contactForm) {
-    contactForm.addEventListener("submit", function(e) {
-      e.preventDefault();
+  prevBtn.addEventListener("click", () => {
+    showSlide(currentSlide - 1);
+    resetAutoSlide();
+  });
 
-      fetch(contactForm.action, {
-        method: "POST",
-        body: new FormData(contactForm),
-      })
-      .then(response => {
-        if (response.ok) {
-          alert("Mensagem enviada com sucesso! 🎉");
-          contactForm.reset();
-        } else {
-          alert("Ops! Algo deu errado. Tente novamente.");
-        }
-      })
-      .catch(() => alert("Erro de conexão. Verifique sua internet."));
-    });
-  }
+  nextBtn.addEventListener("click", () => {
+    showSlide(currentSlide + 1);
+    resetAutoSlide();
+  });
+}
 
-    // 4. WHATSAPP
-window.addEventListener('load', () => {
-  const whatsappFloat = document.getElementById('whatsapp-float');
+// ====== 4. FORMULÁRIO DE CONTATO ======
+function initContactForm() {
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Mensagem enviada com sucesso! 🎉");
+        contactForm.reset();
+      } else {
+        alert("Ops! Algo deu errado. Tente novamente.");
+      }
+    })
+    .catch(() => alert("Erro de conexão. Verifique sua internet."));
+  });
+}
+
+// ====== 5. WHATSAPP TOOLTIP ======
+function initWhatsappTooltip() {
   if (!whatsappFloat) return;
 
-  whatsappFloat.classList.add('show-tooltip');
-  
-  setTimeout(() => {
-    whatsappFloat.classList.remove('show-tooltip');
-  }, 4000); // 4000ms = 4 segundos
-});
-
-// Fundo neurônio minimalista no canvas
-
-const canvas = document.getElementById('neuron-bg');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let points = [];
-const pointCount = 60;  // quantos pontos
-const maxDistance = 130; // distância máxima para conectar linhas
-
-let mouse = { x: null, y: null };
-
-// Ajusta o tamanho do canvas
-function resize() {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
+  window.addEventListener('load', () => {
+    whatsappFloat.classList.add('show-tooltip');
+    setTimeout(() => {
+      whatsappFloat.classList.remove('show-tooltip');
+    }, 4000);
+  });
 }
-resize();
-window.addEventListener('resize', resize);
 
-// Cria pontos aleatórios
-function initPoints() {
-  points = [];
-  for (let i = 0; i < pointCount; i++) {
-    points.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.3, // velocidade lenta
-      vy: (Math.random() - 0.5) * 0.3
+// ====== 6. FUNDO CANVAS NEURÔNIO ======
+function initCanvasBg() {
+  if (!canvas || !ctx) return;
+
+  let width, height;
+  const pointCount = 60;
+  const maxDistance = 130;
+
+  let points = [];
+  let mouse = { x: null, y: null };
+
+  // Ajusta tamanho do canvas
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Cria pontos aleatórios
+  function initPoints() {
+    points = [];
+    for (let i = 0; i < pointCount; i++) {
+      points.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+      });
+    }
+  }
+  initPoints();
+
+  // Desenha e atualiza os pontos e linhas
+  function animate() {
+    // Fundo conforme tema
+    ctx.fillStyle = body.classList.contains('light-theme') ? '#f5f5f5' : '#000000';
+    ctx.fillRect(0, 0, width, height);
+
+    // Atualiza posição
+    points.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
     });
-  }
-}
-initPoints();
 
-// Atualiza posição dos pontos e desenha tudo
-function animate() {
-  // pinta fundo de acordo com tema
-  if (document.body.classList.contains('light-theme')) {
-    ctx.fillStyle = '#f5f5f5';
-  } else {
-    ctx.fillStyle = '#000000';
-  }
-  ctx.fillRect(0, 0, width, height);
+    // Linhas entre pontos próximos
+    for (let i = 0; i < pointCount; i++) {
+      for (let j = i + 1; j < pointCount; j++) {
+        const dx = points[i].x - points[j].x;
+        const dy = points[i].y - points[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
 
-  // move os pontos
-  points.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < 0 || p.x > width) p.vx *= -1;
-    if (p.y < 0 || p.y > height) p.vy *= -1;
-  });
-
-  // desenha linhas entre pontos próximos
-  for (let i = 0; i < pointCount; i++) {
-    for (let j = i + 1; j < pointCount; j++) {
-      const dx = points[i].x - points[j].x;
-      const dy = points[i].y - points[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-
-      if (dist < maxDistance) {
-        const opacity = 1 - dist / maxDistance;
-        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.4})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(points[i].x, points[i].y);
-        ctx.lineTo(points[j].x, points[j].y);
-        ctx.stroke();
+        if (dist < maxDistance) {
+          const opacity = 1 - dist / maxDistance;
+          ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.4})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[j].x, points[j].y);
+          ctx.stroke();
+        }
       }
     }
-  }
 
-  // desenha pontos e linhas ao mouse
-  points.forEach(p => {
-    ctx.fillStyle = 'rgba(166, 161, 225, 0.7)';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-    ctx.fill();
+    // Pontos e conexões com mouse
+    points.forEach(p => {
+      ctx.fillStyle = 'rgba(166, 161, 225, 0.7)';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+      ctx.fill();
 
-    if (mouse.x !== null && mouse.y !== null) {
-      const dx = p.x - mouse.x;
-      const dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < maxDistance) {
-        const opacity = 1 - dist / maxDistance;
-        ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.6})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.stroke();
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+
+        if (dist < maxDistance) {
+          const opacity = 1 - dist / maxDistance;
+          ctx.strokeStyle = `rgba(166, 161, 225, ${opacity * 0.6})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
       }
-    }
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Movimento do mouse
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
 
-  requestAnimationFrame(animate);
+  // Remove mouse quando sai da janela
+  window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
 }
-animate();
 
-// Captura movimento do mouse
-window.addEventListener('mousemove', (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
+// ====== 7. MENU HAMBURGUER ======
+function initMenuToggle() {
+  if (!menuToggle || !navLinks) return;
 
-// Quando mouse sai da janela, remove referência
-window.addEventListener('mouseout', () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
-// Menu hambúrguer
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-if (menuToggle && navLinks) {
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
   });
 }
 
-// Tooltip do WhatsApp (mobile)
-window.addEventListener('load', () => {
+// ====== 8. TOOLTIP WHATSAPP MOBILE HEADER  ======
+function initWhatsappHeaderTooltip() {
   const whatsappHeader = document.querySelector('.tooltip-container');
   if (!whatsappHeader) return;
 
-  whatsappHeader.classList.add('show-tooltip');
+  window.addEventListener('load', () => {
+    whatsappHeader.classList.add('show-tooltip');
 
-  setTimeout(() => {
-    whatsappHeader.classList.remove('show-tooltip');
-  }, 3500); // some depois de 3.5s
+    setTimeout(() => {
+      whatsappHeader.classList.remove('show-tooltip');
+    }, 3500);
+  });
+}
+
+// ====== INICIALIZAÇÃO ======
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initPreloader();
+  initSlider();
+  initContactForm();
+  initWhatsappTooltip();
+  initCanvasBg();
+  initMenuToggle();
+  initWhatsappHeaderTooltip();
 });
 </script>
 </body>
