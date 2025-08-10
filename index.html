@@ -500,22 +500,6 @@ body.light-theme p[style] {
 
 /* Mobile: esconder nav-links padrão */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: var(--background-color, #111);
-    width: 200px;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0 0 0 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  .nav-links.show {
-    display: flex;
-  }
   .header-actions {
     gap: 0.5rem;
   }
@@ -537,85 +521,52 @@ body.light-theme p[style] {
   #whatsapp-header {
     display: none;
   }
+  .nav-links {
+    display: none; /* some completamente no mobile */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #222;
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .nav-links.show {
+    display: flex; /* mostra só com a classe show */
+  }
+
+  #menu-toggle {
+    display: block; /* botão aparece só no mobile */
+  }
+
+  /* Mostra o botão toggle e o whatsapp no mobile */
+  .whatsapp-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
+
+/* Menu desktop sempre visível, botão toggle escondido */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex !important;
+  }
+  #menu-toggle {
+    display: none !important;
+  }
+}
+
 
 /* Mostrar tooltip em mobile */
 .tooltip-container.show-tooltip .tooltip-text {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -5px);
-}
-
-/* Padrão esconder no desktop */
-#menu-toggle,
-#whatsapp-header {
-  display: none;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: inline-block;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-right: 1rem;
-  }
-  #whatsapp-header {
-    display: inline-block;
-    font-size: 1.5rem;
-    margin-left: 0.5rem;
-    text-decoration: none;
-    color: inherit;
-  }
-  /* Menu padrão escondido */
-.nav-links {
-  display: none;          /* some de verdade */
-  flex-direction: column; /* pra quando abrir em mobile */
-  background-color: #222; /* exemplo */
-  position: absolute;     /* fica sobre o conteúdo */
-  top: 60px;              /* ajusta posição abaixo do header */
-  right: 10px;
-  width: 180px;
-  border-radius: 5px;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  z-index: 1000;
-}
-
-/* Quando o menu está ativo, mostra com display flex */
-.nav-links.show {
-  display: flex;
-}
-
-/* Estiliza os links dentro do menu */
-.nav-links li {
-  margin: 0.5rem 0;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-/* Só pra garantir que no desktop sempre mostre normal */
-@media (min-width: 768px) {
-  .nav-links {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    background: none;
-    box-shadow: none;
-    width: auto;
-    padding: 0;
-  }
-
-  .nav-links li {
-    margin: 0 1rem;
-  }
 }
 
 </style>
@@ -1104,7 +1055,15 @@ function initMenuToggle() {
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
   });
+
+  // FECHA MENU AO CLICAR EM UM LINK (UX top)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+    });
+  });
 }
+
 
 // ====== 8. TOOLTIP WHATSAPP MOBILE HEADER  ======
 function initWhatsappHeaderTooltip() {
