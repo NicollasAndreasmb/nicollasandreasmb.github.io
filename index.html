@@ -486,12 +486,6 @@ body.light-theme p[style] {
   pointer-events: none;
 }
 
-/* === NAVEGAÇÃO E HEADER MOBILE === */
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
 .header-actions {
   display: flex;
   align-items: center;
@@ -503,70 +497,322 @@ body.light-theme p[style] {
   .header-actions {
     gap: 0.5rem;
   }
-  .menu-toggle {
-    font-size: 1.8rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  /* WhatsApp e menu toggle aparecem só no mobile */
-  .whatsapp-mobile,
-  #menu-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  /* Esconde ícones no desktop */
-  #menu-toggle,
-  #whatsapp-header {
-    display: none;
-  }
-  .nav-links {
-    display: none; /* some completamente no mobile */
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #222;
-    width: 100%;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  .nav-links.show {
-    display: flex; /* mostra só com a classe show */
-  }
-
-  #menu-toggle {
-    display: block; /* botão aparece só no mobile */
-  }
-
-  /* Mostra o botão toggle e o whatsapp no mobile */
-  .whatsapp-mobile {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+ 
 }
-
-/* Menu desktop sempre visível, botão toggle escondido */
-@media (min-width: 769px) {
-  .nav-links {
-    display: flex !important;
-  }
-  #menu-toggle {
-    display: none !important;
-  }
-}
-
 
 /* Mostrar tooltip em mobile */
 .tooltip-container.show-tooltip .tooltip-text {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -5px);
+}
+
+/* Estilos gerais da navegação */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 60px; /* Altura do header */
+    left: 0;
+    width: 100%;
+    background: #111;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.show {
+    max-height: 300px; /* Altura suficiente para os itens */
+    padding: 1rem 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  #menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: #ddd;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* Esconde o toggle em desktop */
+@media (min-width: 769px) {
+  #menu-toggle {
+    display: none;
+  }
+}
+
+/* Ajusta o header para mobile */
+@media (max-width: 768px) {
+  .header-nav {
+    padding: 0.8rem 1rem;
+  }
+  
+  .header-actions {
+    gap: 0.8rem;
+  }
+}
+
+/* Transição suave para os links */
+.nav-links li a {
+  transition: all 0.2s ease;
+}
+
+/* Efeito hover nos links (mobile e desktop) */
+.nav-links li a:hover {
+  color: #60519b;
+  background: rgba(96, 81, 155, 0.1);
+}
+
+/* Ajuste para tema claro */
+.light-theme .nav-links {
+  background: #fff;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.light-theme .nav-links li a:hover {
+  background: rgba(96, 81, 155, 0.05);
+}
+
+/* Seção Certificações */
+.certifications {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.certification-card {
+  background: rgba(96, 81, 155, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid #60519b;
+  transition: transform 0.3s ease;
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+}
+
+.certification-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.certification-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+}
+
+/* Seção Habilidades */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.skill-category {
+  flex: 1;
+  min-width: 250px;
+}
+
+.skill-item {
+  margin-bottom: 1rem;
+}
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.skill-bar {
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: #60519b;
+  border-radius: 4px;
+}
+
+/* Filtros do Portfólio */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background: #222;
+  border: 1px solid #60519b;
+  color: #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #60519b;
+  color: #fff;
+}
+
+/* Visualização em Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.portfolio-item {
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(96, 81, 155, 0.3);
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.portfolio-info {
+  padding: 1rem;
+}
+
+.portfolio-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.portfolio-tech span {
+  background: rgba(96, 81, 155, 0.2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+/* Seção Métricas */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(96, 81, 155, 0.1);
+  border-radius: 8px;
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #60519b;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Modo Grid/Slider */
+.view-toggle {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.view-btn {
+  background: none;
+  border: none;
+  color: #ddd;
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.view-btn.active {
+  opacity: 1;
+  color: #60519b;
+}
+
+/* Animações Suaves */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-animate {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Light Theme Adjustments */
+.light-theme .certification-card,
+.light-theme .portfolio-item,
+.light-theme .metric-card {
+  background: #f5f5f5;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.light-theme .skill-bar {
+  background: #e0e0e0;
+}
+
+.light-theme .filter-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.light-theme .filter-btn.active, 
+.light-theme .filter-btn:hover {
+  background: #60519b;
+  color: #fff;
 }
 
 </style>
@@ -592,9 +838,6 @@ body.light-theme p[style] {
 
     <div class="header-actions">
       <button id="theme-toggle" aria-label="Mudar tema" title="Mudar tema">🌙</button>
-      <a href="https://wa.me/5514991817771" target="_blank" rel="noopener" aria-label="WhatsApp" class="whatsapp-mobile" title="WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-      </a>
       <button id="menu-toggle" aria-label="Abrir menu" class="menu-toggle" title="Abrir menu">☰</button>
     </div>
   </header>
@@ -811,6 +1054,151 @@ body.light-theme p[style] {
     </section>
   </div>
 
+  <section id="skills" class="section-animate" aria-labelledby="skills-title">
+    <h2 class="section-title" id="skills-title">HABILIDADES TÉCNICAS</h2>
+    
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>Front-end</h3>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>HTML5/CSS3</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <!-- Mais habilidades front-end -->
+      </div>
+      
+      <div class="skill-category">
+        <h3>Back-end</h3>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Python</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <!-- Mais habilidades back-end -->
+      </div>
+      
+      <div class="skill-category">
+        <h3>Ferramentas</h3>
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Figma</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        <!-- Mais habilidades de ferramentas -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Nova Seção: Certificações -->
+  <section id="certifications" class="section-animate" aria-labelledby="certifications-title">
+    <h2 class="section-title" id="certifications-title">CERTIFICAÇÕES</h2>
+    
+    <div class="certifications">
+      <article class="certification-card">
+        <div class="certification-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/271/271226.png" alt="Alura" class="certification-icon">
+          <h3>Formação Front-end</h3>
+        </div>
+        <p>Alura - 2023 | 120 horas</p>
+        <p>Conclusão de 8 cursos focados em desenvolvimento web front-end.</p>
+      </article>
+      
+      <article class="certification-card">
+        <div class="certification-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" class="certification-icon">
+          <h3>Python para Data Science</h3>
+        </div>
+        <p>DataCamp - 2024 | 60 horas</p>
+        <p>Fundamentos de Python aplicado à análise de dados e visualização.</p>
+      </article>
+      
+      <!-- Mais certificações -->
+    </div>
+  </section>
+
+  <!-- Seção Portfólio Atualizada -->
+  <section id="projects" class="container section-animate" aria-labelledby="projects-title">
+    <h2 class="section-title" id="projects-title">PORTFÓLIO</h2>
+    
+    <!-- Contadores de Impacto -->
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="metric-value">15+</div>
+        <div class="metric-label">Projetos Completos</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Satisfação do Cliente</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">5</div>
+        <div class="metric-label">Hackathons</div>
+      </div>
+    </div>
+    
+    <!-- Controles de Visualização -->
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="slider">Slider</button>
+      <button class="view-btn" data-view="grid">Grid</button>
+    </div>
+    
+    <!-- Filtros -->
+    <div class="portfolio-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="automation">Automação</button>
+    </div>
+    
+    <!-- Visualização em Slider (existente) -->
+    <div class="slider-container" id="slider-view">
+      <!-- Seu slider existente aqui -->
+    </div>
+    
+    <!-- Nova Visualização em Grid -->
+    <div class="portfolio-grid" id="grid-view" style="display: none;">
+      <article class="portfolio-item" data-category="web">
+        <img src="projetoeducacional.png" alt="App Educacional" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3>Aplicativo Educacional Infantil</h3>
+          <div class="portfolio-tech">
+            <span>Figma</span>
+            <span>UI/UX</span>
+          </div>
+          <p>Projeto vencedor no Hackathon Educação 2023</p>
+          <a href="#" class="btn-link">Detalhes</a>
+        </div>
+      </article>
+      
+      <article class="portfolio-item" data-category="automation">
+        <img src="Maxcon1.png" alt="Estoque Financeiro" class="portfolio-img">
+        <div class="portfolio-info">
+          <h3>Sistema de Estoque</h3>
+          <div class="portfolio-tech">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>Automation</span>
+          </div>
+          <p>Reduziu tempo de processos em 40%</p>
+          <a href="#" class="btn-link">Detalhes</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- WhatsApp flutuante no canto inferior -->
   <div id="whatsapp-float" role="complementary" aria-label="WhatsApp flutuante">
     <a href="https://wa.me/5514991817771" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -845,20 +1233,42 @@ let autoSlideInterval;
 function initTheme() {
   if (!themeToggle) return;
 
-  // Carrega preferencia salva
-  if (localStorage.getItem('theme') === 'light') {
+  // Verifica o tema do sistema e se há preferência salva
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('theme');
+  
+  // Determina o tema inicial (prioriza a seleção manual se existir)
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  
+  // Aplica o tema inicial
+  applyTheme(initialTheme);
+
+  // Observa mudanças no tema do sistema (só reage se não houver seleção manual)
+  const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  colorSchemeQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  // Evento de clique para alternar manualmente
+  themeToggle.addEventListener('click', () => {
+    const isLight = body.classList.contains('light-theme');
+    const newTheme = isLight ? 'dark' : 'light';
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+}
+
+// Função auxiliar para aplicar o tema
+function applyTheme(theme) {
+  if (theme === 'light') {
     body.classList.add('light-theme');
     themeToggle.textContent = '☀️';
+  } else {
+    body.classList.remove('light-theme');
+    themeToggle.textContent = '🌙';
   }
-
-  // Evento de clique para alternar
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-theme');
-    const isLight = body.classList.contains('light-theme');
-    themeToggle.textContent = isLight ? '☀️' : '🌙';
-
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
 }
 
 // ====== 2. PRELOADER ======
@@ -1050,16 +1460,20 @@ function initCanvasBg() {
 
 // ====== 7. MENU HAMBURGUER ======
 function initMenuToggle() {
+  
   if (!menuToggle || !navLinks) return;
 
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('show');
+    // Alterna o ícone do hambúrguer para X quando aberto
+    menuToggle.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
   });
 
-  // FECHA MENU AO CLICAR EM UM LINK (UX top)
-  navLinks.querySelectorAll('a').forEach(link => {
+  // Fecha o menu quando um item é clicado
+  document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('show');
+      menuToggle.textContent = '☰';
     });
   });
 }
@@ -1079,6 +1493,76 @@ function initWhatsappHeaderTooltip() {
   });
 }
 
+// Alternar entre Grid e Slider
+function initViewToggle() {
+  const viewBtns = document.querySelectorAll('.view-btn');
+  const sliderView = document.getElementById('slider-view');
+  const gridView = document.getElementById('grid-view');
+  
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      if (btn.dataset.view === 'slider') {
+        sliderView.style.display = 'block';
+        gridView.style.display = 'none';
+      } else {
+        sliderView.style.display = 'none';
+        gridView.style.display = 'grid';
+      }
+    });
+  });
+}
+// Filtros do Portfólio
+function initPortfolioFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const filter = btn.dataset.filter;
+      
+      portfolioItems.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.style.opacity = '1';
+          }, 50);
+        } else {
+          item.style.opacity = '0';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+}
+
+// Animação de Scroll
+function initScrollAnimation() {
+  const sections = document.querySelectorAll('.section-animate');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  sections.forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+  });
+}
 // ====== INICIALIZAÇÃO ======
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -1089,6 +1573,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCanvasBg();
   initMenuToggle();
   initWhatsappHeaderTooltip();
+  initViewToggle();
+  initPortfolioFilters();
+  initScrollAnimation();
 });
 </script>
 </body>
