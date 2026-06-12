@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  index.html
+  ----------------------------------------------------------------------------
+  Página inicial do portfólio de Nicollas Andreas (NicollasDev). Reúne, em
+  rolagem única, as seções de apresentação, serviços, experiências,
+  habilidades, sobre, projetos em destaque, certificações e contato. A
+  estrutura é semântica; estilos ficam em css/styles.css e o comportamento em
+  js/main.js (módulos ES).
+  ============================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicollas Andreas | Desenvolvedor Full Stack</title>
+
+  <meta name="description" content="Portfólio de Nicollas Andreas, desenvolvedor full stack e suporte técnico. Sites personalizados, sistemas sob demanda e automações em Python e JavaScript." />
+  <meta name="author" content="Nicollas Andreas Marques Barros" />
+  <meta name="theme-color" content="#7b6cf6" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nicollas Andreas | Desenvolvedor Full Stack" />
+  <meta property="og:description" content="Sites personalizados, sistemas sob demanda e automações. Veja projetos e entre em contato." />
+  <meta property="og:url" content="https://nicollasdev.com.br/" />
+  <meta property="og:image" content="https://nicollasdev.com.br/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="canonical" href="https://nicollasdev.com.br/" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer data-domain="nicollasdev.com.br" src="https://plausible.io/js/script.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nicollas Andreas Marques Barros",
+    "jobTitle": "Desenvolvedor Full Stack",
+    "url": "https://nicollasdev.com.br",
+    "sameAs": [
+      "https://github.com/NicollasAndreasmb",
+      "https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="preloader">
+    <p class="preloader-mark">Nicollas<span>Dev</span></p>
+  </div>
+
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Nicollas<span>Dev</span></a>
+
+    <nav aria-label="Navegação principal">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#experiences">Experiências</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#certifications">Cursos</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Ativar tema claro"></button>
+      <button id="menu-toggle" class="icon-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero-photo">
+        <img src="assets/img/nicollas.jpg" alt="Retrato de Nicollas Andreas" width="150" height="150" />
+      </div>
+      <div class="hero-text">
+        <p class="availability"><span class="dot"></span> Disponível para novos projetos</p>
+        <h1>Nicollas Andreas</h1>
+        <p class="role">Desenvolvedor Full Stack<span class="cursor">_</span></p>
+        <p class="lead">
+          Estudante de Ciências da Computação que transforma ideias em sites,
+          sistemas e automações. Foco em soluções funcionais, interfaces claras
+          e código que faz sentido.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Vamos conversar</a>
+          <a class="btn btn-ghost" href="#projects">Ver projetos</a>
+          <a class="btn btn-ghost" href="assets/curriculo-nicollas-andreas.pdf" target="_blank" rel="noopener noreferrer">Baixar currículo (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="services" aria-labelledby="services-title">
+      <span class="eyebrow">Serviços</span>
+      <h2 class="section-title" id="services-title">O que eu construo</h2>
+      <p class="lead">
+        Desenvolvo soluções digitais sob medida para pessoas, profissionais e
+        empresas que desejam otimizar processos, fortalecer sua presença online
+        e transformar ideias em produtos reais. Do planejamento à entrega, cada
+        projeto é conduzido com foco em qualidade, usabilidade e resultados.
+      </p>
+
+      <div class="services">
+        <article class="service">
+          <div class="service-head">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </span>
+            <h3>Sites personalizados</h3>
+          </div>
+          <p class="service-desc">
+            Criação de sites modernos, responsivos e otimizados para diferentes
+            dispositivos, projetados para transmitir credibilidade e conectar sua
+            marca ao público certo.
+          </p>
+          <div class="service-cols">
+            <div class="service-col">
+              <h4>O que posso desenvolver</h4>
+              <ul class="ticks">
+                <li>Sites institucionais</li>
+                <li>Portfólios profissionais</li>
+                <li>Landing pages</li>
+                <li>Catálogos digitais</li>
+                <li>Páginas para eventos e projetos</li>
+              </ul>
+            </div>
+            <div class="service-col">
+              <h4>Benefícios</h4>
+              <ul class="ticks">
+                <li>Design responsivo</li>
+                <li>Carregamento rápido</li>
+                <li>Estrutura organizada</li>
+                <li>Experiência intuitiva para o usuário</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="service">
+          <div class="service-head">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+            </span>
+            <h3>Sistemas sob demanda</h3>
+          </div>
+          <p class="service-desc">
+            Desenvolvimento de sistemas personalizados para automatizar processos,
+            centralizar informações e resolver necessidades específicas do seu
+            negócio.
+          </p>
+          <div class="service-cols">
+            <div class="service-col">
+              <h4>Exemplos de soluções</h4>
+              <ul class="ticks">
+                <li>Sistemas de cadastro</li>
+                <li>Controle de estoque</li>
+                <li>Gestão de clientes</li>
+                <li>Painéis administrativos</li>
+                <li>Ferramentas internas</li>
+                <li>Dashboards e relatórios</li>
+              </ul>
+            </div>
+            <div class="service-col">
+              <h4>Benefícios</h4>
+              <ul class="ticks">
+                <li>Redução de trabalho manual</li>
+                <li>Organização de dados</li>
+                <li>Maior produtividade</li>
+                <li>Soluções adaptadas à sua realidade</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="service">
+          <div class="service-head">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+            <h3>Automações</h3>
+          </div>
+          <p class="service-desc">
+            Criação de automações utilizando Python e outras tecnologias para
+            eliminar tarefas repetitivas, reduzir erros operacionais e aumentar a
+            eficiência do trabalho.
+          </p>
+          <div class="service-cols">
+            <div class="service-col">
+              <h4>Exemplos de automações</h4>
+              <ul class="ticks">
+                <li>Processamento de planilhas</li>
+                <li>Geração de relatórios</li>
+                <li>Integração entre sistemas</li>
+                <li>Organização de dados</li>
+                <li>Rotinas administrativas</li>
+                <li>Fluxos automatizados</li>
+              </ul>
+            </div>
+            <div class="service-col">
+              <h4>Benefícios</h4>
+              <ul class="ticks">
+                <li>Economia de tempo</li>
+                <li>Menos atividades repetitivas</li>
+                <li>Maior precisão nos processos</li>
+                <li>Escalabilidade operacional</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="service">
+          <div class="service-head">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </span>
+            <h3>Suporte técnico</h3>
+          </div>
+          <p class="service-desc">
+            Atendimento remoto e presencial para diagnóstico, manutenção,
+            configuração e resolução de problemas relacionados a computadores,
+            softwares e sistemas.
+          </p>
+          <div class="service-cols">
+            <div class="service-col">
+              <h4>Serviços realizados</h4>
+              <ul class="ticks">
+                <li>Diagnóstico e correção de falhas</li>
+                <li>Instalação e configuração de programas</li>
+                <li>Formatação e otimização</li>
+                <li>Remoção de problemas de software</li>
+                <li>Configuração de equipamentos</li>
+                <li>Orientação técnica</li>
+              </ul>
+            </div>
+            <div class="service-col">
+              <h4>Benefícios</h4>
+              <ul class="ticks">
+                <li>Atendimento personalizado</li>
+                <li>Soluções rápidas e objetivas</li>
+                <li>Acompanhamento durante o processo</li>
+                <li>Redução de tempo de inatividade</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="diferenciais">
+        <h3>Diferenciais</h3>
+        <ul class="ticks ticks-grid">
+          <li>Soluções desenvolvidas sob medida</li>
+          <li>Comunicação clara durante todo o projeto</li>
+          <li>Foco em problemas reais e resultados práticos</li>
+          <li>Desenvolvimento moderno e escalável</li>
+          <li>Suporte e acompanhamento após a entrega</li>
+          <li>Compromisso com qualidade e organização</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" id="experiences" aria-labelledby="experiences-title">
+      <span class="eyebrow">Experiências</span>
+      <h2 class="section-title" id="experiences-title">Trajetória</h2>
+
+      <div class="timeline">
+        <article class="job">
+          <h3 class="job-title">Agente de Registro &amp; Suporte Técnico em TI</h3>
+          <time class="job-date" datetime="2025-07">Jul 2025 – Momento (atual)</time>
+          <p class="job-desc">
+            Atuação como Agente de Registro, unindo atendimento e processos de
+            certificados digitais ao desenvolvimento de sistemas, automações e
+            soluções web. Perfil versátil que combina atividades técnicas de TI,
+            desenvolvimento de software e atendimento a clientes.
+          </p>
+        </article>
+
+        <article class="job">
+          <h3 class="job-title">Desenvolvedor Full Stack — Maxcon (PJ, Remoto)</h3>
+          <time class="job-date" datetime="2025-01">Jan 2025 – Jul 2025</time>
+          <p class="job-desc">
+            Desenvolvimento full stack autônomo: criação de site em WordPress,
+            automações em Python e simuladores personalizados. Gestão completa
+            do ciclo do projeto, da concepção à manutenção.
+          </p>
+          <div class="tech-row" aria-label="Tecnologias usadas">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" data-invert />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+          </div>
+        </article>
+
+        <article class="job">
+          <h3 class="job-title">Colaborador — Hackathons e Projetos Acadêmicos</h3>
+          <time class="job-date" datetime="2019-01">2019 – Presente (Remoto e Presencial)</time>
+          <p class="job-desc">
+            Idealização e design UX/UI com Figma para planejamentos e analise para a melhor aplicação de linguagens em projetos de
+            faculdade e competições, com foco em soluções intuitivas e entrega
+            de protótipos interativos em equipes multidisciplinares.
+          </p>
+          <div class="tech-row" aria-label="Tecnologias usadas">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" data-invert />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" data-dark-invert />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+          </div>
+        </article>
+      </div>
+
+      <span class="eyebrow" style="margin-top: 2.4rem;">Habilidades</span>
+      <h2 class="section-title">Ferramentas que domino</h2>
+      <div class="skills">
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">HTML5</span>
+          <div class="skill-bar"><span data-level="100%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">CSS3</span>
+          <div class="skill-bar"><span data-level="100%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Figma</span>
+          <div class="skill-bar"><span data-level="100%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="" aria-hidden="true" data-invert />
+          <span class="skill-name">WordPress</span>
+          <div class="skill-bar"><span data-level="90%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-bar"><span data-level="85%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">TypeScript</span>
+          <div class="skill-bar"><span data-level="80%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Angular</span>
+          <div class="skill-bar"><span data-level="80%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" aria-hidden="true" data-dark-invert />
+          <span class="skill-name">Next.js</span>
+          <div class="skill-bar"><span data-level="80%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Python</span>
+          <div class="skill-bar"><span data-level="80%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">PostgreSQL</span>
+          <div class="skill-bar"><span data-level="75%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Supabase</span>
+          <div class="skill-bar"><span data-level="75%"></span></div>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Git</span>
+          <div class="skill-bar"><span data-level="75%"></span></div>
+      </div>
+      <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" aria-hidden="true" />
+          <span class="skill-name">Docker</span>
+          <div class="skill-bar"><span data-level="70%"></span></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="about" aria-labelledby="about-title">
+      <span class="eyebrow">Sobre</span>
+      <h2 class="section-title" id="about-title">Quem está por trás do código</h2>
+      <div class="about">
+        <p>
+          <strong>Sou Nicollas Andreas, estudante de Ciência da Computação, desenvolvedor full stack e criador de soluções digitais.</strong>
+          Atuo no desenvolvimento de sistemas web, automações e websites
+          personalizados, transformando ideias e necessidades reais em produtos
+          funcionais, intuitivos e eficientes. Minha experiência envolve projetos
+          acadêmicos, desenvolvimento para clientes, participação em eventos de
+          inovação e construção de soluções voltadas para otimização de processos
+          e experiência do usuário.
+        </p>
+        <p>
+          Tenho conhecimento em JavaScript, TypeScript, Python, HTML, CSS, bancos
+          de dados, UX/UI e desenvolvimento de aplicações web modernas. Busco unir
+          tecnologia, design e usabilidade para criar ferramentas que resolvam
+          problemas de forma prática e inteligente.
+        </p>
+        <p>
+          Além da programação, mantenho interesse constante por áreas como análise
+          de dados, arquitetura de software, experiência do usuário e comportamento
+          humano, acreditando que as melhores soluções surgem da combinação entre
+          raciocínio técnico, interpretação de informações e compreensão das pessoas.
+        </p>
+        <p>
+          Estou sempre aprendendo, desenvolvendo novos projetos e explorando formas
+          de utilizar a tecnologia para gerar impacto real.
+        </p>
+        <div class="socials" aria-label="Perfis e redes">
+          <a href="https://github.com/NicollasAndreasmb" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" />
+          </a>
+          <a href="https://www.linkedin.com/in/nicollas-andreas-marques-barros-131034263/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://huggingface.co/NicollasMarques" target="_blank" rel="noopener noreferrer" title="Hugging Face" aria-label="Hugging Face">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg" alt="Hugging Face" />
+          </a>
+          <a href="https://www.figma.com/@nicollasamb" target="_blank" rel="noopener noreferrer" title="Figma" aria-label="Figma">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/figma.svg" alt="Figma" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="projects" aria-labelledby="projects-title">
+      <span class="eyebrow">Projetos</span>
+      <h2 class="section-title" id="projects-title">Trabalhos recentes</h2>
+      <p class="lead">Uma seleção de sistemas, sites e protótipos entregues.</p>
+
+      <div class="carousel" style="margin-top: 1.6rem;">
+        <button id="carousel-prev" class="carousel-btn" type="button" aria-label="Projeto anterior">←</button>
+        <div class="carousel-track" id="carousel-track" role="list" aria-live="polite"></div>
+        <button id="carousel-next" class="carousel-btn" type="button" aria-label="Próximo projeto">→</button>
+      </div>
+
+      <div class="section-foot">
+        <a class="btn btn-ghost" href="projetos.html">Ver todos os projetos</a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="testimonials" aria-labelledby="testimonials-title">
+      <span class="eyebrow">Depoimentos</span>
+      <h2 class="section-title" id="testimonials-title">O que dizem os clientes</h2>
+      <div class="testimonials-list" id="testimonials-list"></div>
+    </section>
+
+    <section class="section reveal" id="certifications" aria-labelledby="cert-title">
+      <span class="eyebrow">Formação</span>
+      <h2 class="section-title" id="cert-title">Formação, cursos e conquistas</h2>
+      <ul class="cert-list">
+        <li class="cert-highlight">
+          <strong><span class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></span> Hackathon Hack-Barão: Gastronomia, inovação e sustentabilidade - Barão de Mauá  — 2º lugar geral (equipe F.I.R.M.A., projeto BARGANHA)</strong>
+          <span class="cert-year">Abril 2026</span>
+        </li>
+        <li>
+          <strong>Ciências da Computação — Barão de Mauá</strong>
+          <span class="cert-year">2024 – atualmente</span>
+        </li>
+        <li>
+          <strong>Técnico em Informática — Senac</strong>
+          <span class="cert-year">2021 – 2023</span>
+        </li>
+        <li>
+          <strong>Laboratório de Inteligência Artificial e Visão Computacional (PDI)</strong>
+          <span class="cert-year">2024</span>
+        </li>
+        <li>
+          <strong>Hackathon Hack-Barão: Tecnologia na Educação — Barão de Mauá — Top 10 geral (equipe F.I.R.M.A.)</strong>
+          <span class="cert-year">2024</span>
+        </li>
+        <li>
+          <strong>Hackathon Hack-Barão: Tecnologia e Saúde Mental — Barão de Mauá</strong>
+          <span class="cert-year">2025</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section reveal" id="contact" aria-labelledby="contact-title">
+      <span class="eyebrow">Contato</span>
+      <h2 class="section-title" id="contact-title">Tem um projeto em mente?</h2>
+      <p class="lead">Conte sua ideia e vamos desenvolvê-la juntos.</p>
+
+      <div class="contact-grid" style="margin-top: 1.6rem;">
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/contatonicdev@gmail.com" method="POST" aria-label="Formulário de contato">
+          <label for="cf-name">Seu nome</label>
+          <input id="cf-name" type="text" name="name" placeholder="Como devo te chamar?" required />
+          <label for="cf-email">Seu e-mail</label>
+          <input id="cf-email" type="email" name="email" placeholder="nome@exemplo.com" required />
+          <label for="cf-message">Sua mensagem</label>
+          <textarea id="cf-message" name="message" rows="5" placeholder="Descreva sua ideia ou projeto…" required></textarea>
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="box" />
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="contact-alt">
+          <button id="copy-email" class="btn btn-ghost" type="button" data-email="contatonicdev@gmail.com">Copiar e-mail</button>
+          <a class="btn btn-ghost" href="https://wa.me/5514991817771" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Nicollas Andreas · Desenvolvedor Full Stack</p>
+    <p><a href="mailto:contatonicdev@gmail.com">contatonicdev@gmail.com</a></p>
+  </footer>
+
+  <div class="float-stack">
+    <div class="whatsapp-wrap">
+      <span id="whatsapp-tooltip" role="tooltip">Fale comigo</span>
+      <a id="whatsapp-float" class="float-btn" href="https://wa.me/5514991817771" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="filter: invert(1) brightness(2);" />
+      </a>
+    </div>
+    <button id="to-top" class="float-btn" type="button" aria-label="Voltar ao topo">↑</button>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nicollasdev.com.br/sitemap.xml
