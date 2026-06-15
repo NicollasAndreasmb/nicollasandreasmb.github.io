@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  projeto.html
+  ----------------------------------------------------------------------------
+  Página de estudo de caso de um projeto individual. O projeto exibido é
+  definido pelo parâmetro "p" na URL (ex.: projeto.html?p=combinador-cartas-credito)
+  e o conteúdo é montado em js/projeto.js a partir de js/data/projects.js.
+  ============================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estudo de caso | Nicollas Andreas</title>
+
+  <meta name="description" content="Estudo de caso de um projeto de Nicollas Andreas: contexto, desafio, solução e resultado." />
+  <meta name="theme-color" content="#7b6cf6" />
+  <meta property="og:title" content="Estudo de caso | Nicollas Andreas" />
+  <meta property="og:description" content="Contexto, desafio, solução e resultado de um projeto." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://nicollasdev.com.br/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer data-domain="nicollasdev.com.br" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <div id="preloader">
+    <p class="preloader-mark">Nicollas<span>Dev</span></p>
+  </div>
+
+  <canvas id="neural-bg" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">Nicollas<span>Dev</span></a>
+
+    <nav aria-label="Navegação principal">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#services">Serviços</a></li>
+        <li><a href="index.html#experiences">Experiências</a></li>
+        <li><a href="index.html#about">Sobre</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="index.html#certifications">Cursos</a></li>
+        <li><a href="index.html#contact">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Ativar tema claro"></button>
+      <button id="menu-toggle" class="icon-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section id="project-detail" class="page-hero" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Nicollas Andreas · Desenvolvedor Full Stack</p>
+    <p><a href="mailto:contatonicdev@gmail.com">contatonicdev@gmail.com</a></p>
+  </footer>
+
+  <div class="float-stack">
+    <div class="whatsapp-wrap">
+      <span id="whatsapp-tooltip" role="tooltip">Fale comigo</span>
+      <a id="whatsapp-float" class="float-btn" href="https://wa.me/5514991817771" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="filter: invert(1) brightness(2);" />
+      </a>
+    </div>
+    <button id="to-top" class="float-btn" type="button" aria-label="Voltar ao topo">↑</button>
+  </div>
+
+  <script type="module" src="js/projeto.js"></script>
+</body>
+</html>

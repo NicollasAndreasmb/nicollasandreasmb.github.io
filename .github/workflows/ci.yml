@@ -1,0 +1,57 @@
+# ============================================================================
+# ci.yml
+# ----------------------------------------------------------------------------
+# Pipeline de integração e publicação contínua do portfólio. A cada push na
+# branch principal: valida o HTML (HTMLHint) e a sintaxe dos módulos
+# JavaScript, e em seguida publica o site no GitHub Pages.
+#
+# Para usar a etapa de deploy, defina em Settings > Pages a origem como
+# "GitHub Actions". Mantendo "Deploy from a branch", apenas a validação roda.
+# ============================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validar HTML
+        run: npx --yes htmlhint "**/*.html"
+      - name: Validar sintaxe dos modulos JavaScript
+        run: |
+          for arquivo in $(find js -name "*.js"); do
+            node --check "$arquivo"
+          done
+
+  publicar:
+    needs: validar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+      - id: deployment
+        uses: actions/deploy-pages@v4
